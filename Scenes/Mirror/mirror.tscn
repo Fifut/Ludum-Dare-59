@@ -5,10 +5,9 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_38ylo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3iobw"]
-albedo_color = Color(0.70796657, 0.7079665, 0.7079665, 1)
-metallic = 0.72
+metallic = 0.23
 metallic_specular = 1.0
-roughness = 0.29
+roughness = 0.3
 
 [sub_resource type="BoxMesh" id="BoxMesh_t076n"]
 material = SubResource("StandardMaterial3D_3iobw")

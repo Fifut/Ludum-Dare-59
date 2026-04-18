@@ -28,12 +28,14 @@ func _input(event: InputEvent) -> void:
 			_stop_move = _interact.interact_toggle()
 			camera.current = not _stop_move
 		
-		elif (_interact is Receiver or _interact is Mirror) and not _grab_in_progress:
+		#elif (_interact is Receiver or _interact is Mirror) and not _grab_in_progress:
+		elif (_interact is Mirror) and not _grab_in_progress:
 			_grab_in_progress = true
 			_grab_rotation = _interact.global_rotation_degrees
 			_interact.reparent(self)
 		
-		elif (_interact is Receiver or _interact is Mirror) and _grab_in_progress:
+		elif (_interact is Mirror) and _grab_in_progress:
+		#elif (_interact is Receiver or _interact is Mirror) and _grab_in_progress:		
 			_grab_in_progress = false
 			_interact.reparent(get_tree().root)
 
@@ -46,7 +48,7 @@ func _input(event: InputEvent) -> void:
 		_interact.rotation_degrees.y -= 5.0	
 		_grab_rotation = _interact.global_rotation_degrees
 		
-	elif _grab_in_progress:
+	elif _interact and _grab_in_progress:
 		_interact.global_rotation_degrees = _grab_rotation
 	
 	
@@ -67,7 +69,7 @@ func _input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	
 	if _grab_in_progress:
-		interact_label.text = "E to drop"
+		interact_label.text = "E to drop - Mouse Left/Right rotate"
 		
 	elif _stop_move:
 		interact_label.text = "E to exit"
@@ -75,8 +77,8 @@ func _physics_process(delta: float) -> void:
 	elif _interact is Antena:
 		interact_label.text = "E to aiming"
 	
-	elif _interact is Receiver:
-		interact_label.text = "E to grab"
+	#elif _interact is Receiver:
+		#interact_label.text = "E to grab"
 	
 	elif _interact is Mirror:
 		interact_label.text = "E to grab"

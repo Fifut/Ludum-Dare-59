@@ -33,16 +33,16 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("speed"):
 		speed = 50.0
 		
-	if Input.is_action_pressed("move_left"):
+	if Input.is_action_pressed("move_left") and antena_pivot_point.rotation_degrees.y < 90:
 		antena_pivot_point.rotation_degrees.y += delta * speed
 		
-	elif Input.is_action_pressed("move_right"):
+	elif Input.is_action_pressed("move_right") and antena_pivot_point.rotation_degrees.y > -90:
 		antena_pivot_point.rotation_degrees.y -= delta * speed
 		
-	if Input.is_action_pressed("move_forward"):
+	if Input.is_action_pressed("move_forward") and antena_pivot_point.rotation_degrees.x < 80:
 		antena_pivot_point.rotation_degrees.x += delta * speed
 		
-	elif Input.is_action_pressed("move_backward"):
+	elif Input.is_action_pressed("move_backward") and antena_pivot_point.rotation_degrees.x > 0:
 		antena_pivot_point.rotation_degrees.x -= delta * speed
 	
 

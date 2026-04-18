@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://bnv3y5qhckxb3" path="res://Scenes/Receiver/receiver.tscn" id="3_5otu1"]
 [ext_resource type="PackedScene" uid="uid://dj41dpi6ufpw1" path="res://Scenes/Orbit/orbit.tscn" id="4_nyj3w"]
 [ext_resource type="PackedScene" uid="uid://siuqj3a2xtur" path="res://Scenes/Mirror/mirror.tscn" id="6_phun2"]
-[ext_resource type="PackedScene" uid="uid://bwroakmkgt6pj" path="res://Scenes/Signal/ld_signal.tscn" id="7_0piag"]
 [ext_resource type="PackedScene" uid="uid://ddxp6kh2n0ong" path="res://Assets/3D/Pin.glb" id="8_1j04r"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r3mnd"]
@@ -25,6 +24,29 @@ background_color = Color(0.15452743, 0.0139328055, 0, 1)
 sky = SubResource("Sky_5otu1")
 ambient_light_source = 2
 tonemap_mode = 2
+
+[sub_resource type="Gradient" id="Gradient_ejn12"]
+colors = PackedColorArray(0, 0, 0, 1, 0.11858138, 0.11858138, 0.11858138, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ejn12"]
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1j04r"]
+noise = SubResource("FastNoiseLite_ejn12")
+color_ramp = SubResource("Gradient_ejn12")
+seamless = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1j04r"]
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("NoiseTexture2D_1j04r")
+
+[sub_resource type="SphereMesh" id="SphereMesh_5drxl"]
+lightmap_size_hint = Vector2i(6285, 3143)
+material = SubResource("StandardMaterial3D_1j04r")
+flip_faces = true
+radius = 400.0
+height = 800.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8g4dc"]
 size = Vector3(200, 1, 200)
@@ -56,6 +78,20 @@ size = Vector3(100, 1, 100)
 [sub_resource type="BoxShape3D" id="BoxShape3D_nyj3w"]
 size = Vector3(1, 20, 160)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ejn12"]
+resource_local_to_scene = true
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.29219002, 0.29219005, 0.29219002, 1)
+metallic = 0.5
+roughness = 0.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1j04r"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_ejn12")
+top_radius = 0.05
+bottom_radius = 0.05
+height = 0.1
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5drxl"]
 albedo_color = Color(0, 0.32097834, 1.92523e-07, 1)
 metallic = 0.12
@@ -73,6 +109,12 @@ sky_mode = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1278898658]
 environment = SubResource("Environment_nyj3w")
+
+[node name="SkyboxMesh" type="MeshInstance3D" parent="." unique_id=2057529045]
+unique_name_in_owner = true
+transform = Transform3D(-4.3711385e-08, -0.99999994, 0, 0.9999999, -4.3711385e-08, 0, 0, 0, 0.99999994, 0, 6.5963516, 0)
+visible = false
+mesh = SubResource("SphereMesh_5drxl")
 
 [node name="FloorStaticBody3D" type="StaticBody3D" parent="." unique_id=395930621]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
@@ -128,25 +170,22 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0
 [node name="Antenna1" parent="Antennas" unique_id=499436219 instance=ExtResource("2_r3mnd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.5489435)
 
+[node name="GunMeshInstance3D" parent="Antennas/Antenna1" index="2" unique_id=773715414]
+mesh = SubResource("CylinderMesh_1j04r")
+
+[node name="AntenaPivotPoint" parent="Antennas/Antenna1" index="3" unique_id=1884495132]
+transform = Transform3D(0.9986295, 0.038276095, 0.035693035, 0, 0.6819983, -0.73135364, -0.05233596, 0.7303513, 0.68106365, 0, 1.5, 0)
+
 [node name="Antenna2" parent="Antennas" unique_id=424989504 instance=ExtResource("2_r3mnd")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -7.99333, 0, -6.9970155)
 
 [node name="Mirrors" type="Node3D" parent="." unique_id=1221555627]
 
-[node name="Mirror1" parent="Mirrors" unique_id=592254868 instance=ExtResource("6_phun2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.484397, 0, -9.32461)
-
 [node name="Mirror2" parent="Mirrors" unique_id=1972094085 instance=ExtResource("6_phun2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.484397, 0, -7.742582)
-
-[node name="Mirror3" parent="Mirrors" unique_id=1371043550 instance=ExtResource("6_phun2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.484397, 0, -6.20274)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3713064, 0, -2.3418155)
 
 [node name="Character" parent="." unique_id=2029105437 instance=ExtResource("1_vmgcc")]
-transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, 9, 0, -4)
-
-[node name="LDSignal" parent="." unique_id=1504575994 instance=ExtResource("7_0piag")]
-transform = Transform3D(0.9999803, 0, 0.0062832534, 0, 1, 0, -0.0062832534, 0, 0.9999803, 0, 0.70421505, -4.2660456)
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, 13.607082, 0, -6.6939716)
 
 [node name="UI" type="Control" parent="." unique_id=1037403920]
 layout_mode = 3
@@ -798,6 +837,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
 
 [connection signal="on_ld_signal_received" from="Receivers/Receiver1" to="." method="_on_receiver_on_ld_signal_received"]
 
+[editable path="Antennas/Antenna1"]
 [editable path="Trees/Pin1"]
 [editable path="Trees/Pin2"]
 [editable path="Trees/Pin3"]

@@ -31,6 +31,25 @@ is_hemisphere = true
 height = 0.1
 radius = 0.45
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_82c2j"]
+shading_mode = 0
+albedo_color = Color(0.41598046, 0.41598043, 0.4159804, 1)
+billboard_mode = 2
+
+[sub_resource type="QuadMesh" id="QuadMesh_lg2ox"]
+material = SubResource("StandardMaterial3D_82c2j")
+size = Vector2(0.15, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5cvh0"]
+shading_mode = 0
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_82c2j"]
+material = SubResource("StandardMaterial3D_5cvh0")
+top_radius = 0.04
+bottom_radius = 0.04
+height = 1.0
+
 [node name="Receiver" type="StaticBody3D" unique_id=629734283]
 collision_layer = 10
 axis_lock_linear_y = true
@@ -65,4 +84,16 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
 stream = ExtResource("2_bomn8")
 
+[node name="GaugeMesh" type="MeshInstance3D" parent="." unique_id=1443685884]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+mesh = SubResource("QuadMesh_lg2ox")
+
+[node name="ProgressMesh" type="MeshInstance3D" parent="GaugeMesh" unique_id=495543469]
+unique_name_in_owner = true
+mesh = SubResource("CylinderMesh_82c2j")
+
+[node name="DecreaseTimer" type="Timer" parent="." unique_id=199117093]
+autostart = true
+
 [connection signal="body_entered" from="ReceiverArea3D" to="." method="_on_receiver_area_3d_body_entered"]
+[connection signal="timeout" from="DecreaseTimer" to="." method="_on_decrease_timer_timeout"]
