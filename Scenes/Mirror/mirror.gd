@@ -1,0 +1,1 @@
+class_name Mirror extends StaticBody3D

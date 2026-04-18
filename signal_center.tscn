@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://dhgwygr2gtd1c"]
 
 [ext_resource type="PackedScene" uid="uid://b3jqq5cnlnx21" path="res://Scenes/Character/character.tscn" id="1_vmgcc"]
-[ext_resource type="PackedScene" uid="uid://bq5bia4e8hcfp" path="res://Scenes/Antena/antena.tscn" id="2_r3mnd"]
+[ext_resource type="PackedScene" uid="uid://bq5bia4e8hcfp" path="res://Scenes/Antenna/antenna.tscn" id="2_r3mnd"]
 [ext_resource type="PackedScene" uid="uid://bnv3y5qhckxb3" path="res://Scenes/Receiver/receiver.tscn" id="3_5otu1"]
 [ext_resource type="PackedScene" uid="uid://dj41dpi6ufpw1" path="res://Scenes/Orbit/orbit.tscn" id="4_nyj3w"]
 [ext_resource type="PackedScene" uid="uid://bfta6x7yp31e6" path="res://Scenes/Cameras/god_camera.tscn" id="5_2exh7"]
+[ext_resource type="PackedScene" uid="uid://siuqj3a2xtur" path="res://Scenes/Mirror/mirror.tscn" id="6_phun2"]
+[ext_resource type="PackedScene" uid="uid://bwroakmkgt6pj" path="res://Scenes/Signal/ld_signal.tscn" id="7_0piag"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r3mnd"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -115,8 +117,14 @@ shape = SubResource("BoxShape3D_nyj3w")
 [node name="Receiver" parent="." unique_id=1853702718 instance=ExtResource("3_5otu1")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 2)
 
-[node name="Antena" parent="." unique_id=499436219 instance=ExtResource("2_r3mnd")]
+[node name="Antenna" parent="." unique_id=499436219 instance=ExtResource("2_r3mnd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.063)
 
+[node name="Mirror" parent="." unique_id=592254868 instance=ExtResource("6_phun2")]
+transform = Transform3D(0.6061272, 0, -0.7953677, 0, 1, 0, 0.7953677, 0, 0.6061272, 0.0125284195, 0, -1.2035315)
+
 [node name="Character" parent="." unique_id=2029105437 instance=ExtResource("1_vmgcc")]
-transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, 5, 0, 0)
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, 9, 0, -4)
+
+[node name="LDSignal" parent="." unique_id=1504575994 instance=ExtResource("7_0piag")]
+transform = Transform3D(0.9999803, 0, 0.0062832534, 0, 1, 0, -0.0062832534, 0, 0.9999803, 0, 0.70421505, -4.2660456)

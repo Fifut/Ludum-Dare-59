@@ -26,18 +26,24 @@ func _input(event: InputEvent) -> void:
 		if _interact is Antena:
 			_stop_move = _interact.interact_toggle()
 		
-		elif _interact is Receiver and not _grab_in_progress:
+		elif (_interact is Receiver or _interact is Mirror) and not _grab_in_progress:
 			_grab_in_progress = true
 			_interact.reparent(self)
 		
-		elif _interact is Receiver and _grab_in_progress:
+		elif (_interact is Receiver or _interact is Mirror) and _grab_in_progress:
 			_grab_in_progress = false
 			_interact.reparent(get_tree().root)
-			#_interact.get_parent().remove_child(_interact)
-			#add_child(_interact, true)
+
+	
+	if _grab_in_progress and event.is_action_pressed("rotation_left"):
+		_interact.rotation_degrees.y += 10.0
+		
+	elif _grab_in_progress and event.is_action_pressed("rotation_right"):
+		_interact.rotation_degrees.y -= 10.0	
 	
 	
-	if event is InputEventMouseMotion:
+	
+	if event is InputEventMouseMotion and not _stop_move:
 		rotate_y(-event.relative.x * MOUSE_SENSITIVITY)
 		
 		camera.rotate_x(-event.relative.y * MOUSE_SENSITIVITY)

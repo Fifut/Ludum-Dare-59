@@ -2,6 +2,10 @@
 
 [ext_resource type="Script" uid="uid://r8bbp41wa1x7" path="res://Scenes/Signal/ld_signal.gd" id="1_jk8s2"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jk8s2"]
+friction = 0.0
+bounce = 1.0
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dsovw"]
 vertex_color_use_as_albedo = true
 albedo_color = Color(0, 1, 0, 1)
@@ -9,26 +13,29 @@ emission_enabled = true
 emission = Color(0, 1, 0, 1)
 emission_energy_multiplier = 2.0
 
-[sub_resource type="PrismMesh" id="PrismMesh_dsovw"]
+[sub_resource type="SphereMesh" id="SphereMesh_jk8s2"]
 material = SubResource("StandardMaterial3D_dsovw")
-size = Vector3(0.05, 0.2, 0.01)
+radius = 0.1
+height = 0.2
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_s2ux4"]
-size = Vector3(0.02, 0.01, 0.2)
+[sub_resource type="SphereShape3D" id="SphereShape3D_6cmjg"]
+radius = 0.1
 
-[node name="LDSignal" type="RigidBody3D" unique_id=1504575994]
+[node name="LDSignal" type="RigidBody3D" unique_id=372204297]
 top_level = true
 collision_layer = 4
 collision_mask = 3
 axis_lock_linear_y = true
 axis_lock_angular_x = true
+axis_lock_angular_y = true
 axis_lock_angular_z = true
+physics_material_override = SubResource("PhysicsMaterial_jk8s2")
 script = ExtResource("1_jk8s2")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1152311122]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
-mesh = SubResource("PrismMesh_dsovw")
+mesh = SubResource("SphereMesh_jk8s2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2066487265]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0007171631)
-shape = SubResource("BoxShape3D_s2ux4")
+shape = SubResource("SphereShape3D_6cmjg")
