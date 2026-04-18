@@ -2,6 +2,7 @@ class_name Receiver extends StaticBody3D
 
 
 signal on_ld_signal_received(total: int)
+signal on_level_reach()
 
 @export var max_ld_signal: int = 5
 
@@ -25,6 +26,8 @@ func _on_receiver_area_3d_body_entered(body: Node3D) -> void:
 		body.queue_free()
 		
 		_received_count += 1
+		if _received_count >= max_ld_signal:
+			on_level_reach.emit()
 
 
 func _on_decrease_timer_timeout() -> void:
