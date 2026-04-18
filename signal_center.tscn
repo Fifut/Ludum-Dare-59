@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b3jqq5cnlnx21" path="res://Scenes/Character/character.tscn" id="1_vmgcc"]
 [ext_resource type="PackedScene" uid="uid://bq5bia4e8hcfp" path="res://Scenes/Antena/antena.tscn" id="2_r3mnd"]
 [ext_resource type="PackedScene" uid="uid://bnv3y5qhckxb3" path="res://Scenes/Receiver/receiver.tscn" id="3_5otu1"]
+[ext_resource type="PackedScene" uid="uid://dj41dpi6ufpw1" path="res://Scenes/Orbit/orbit.tscn" id="4_nyj3w"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r3mnd"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -82,3 +83,5 @@ transform = Transform3D(0.96054167, 0, -0.27813622, 0, 1, 0, 0.27813622, 0, 0.96
 
 [node name="Receiver" parent="." unique_id=1853702718 instance=ExtResource("3_5otu1")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 2)
+
+[node name="Orbit" parent="." unique_id=251649051 instance=ExtResource("4_nyj3w")]

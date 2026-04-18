@@ -3,16 +3,27 @@ extends CharacterBody3D
 
 @onready var camera: Camera3D = $Camera3D
 
+@onready var interact_label: Label = %InteractLabel
+
 const SPEED: float = 5.0
 const JUMP_VELOCITY: float = 4.5
 const MOUSE_SENSITIVITY: float = 0.001
 
+var _interact_area: Area3D = null
+var _stop_move: bool = false
+
 
 func _ready() -> void:
+	interact_label.hide()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
 func _input(event: InputEvent) -> void:
+	
+	if _interact_area:
+		if event.is_action_pressed("interact"):
+			_stop_move = _interact_area.interact_toggle()
+	
 	
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * MOUSE_SENSITIVITY)
@@ -28,6 +39,9 @@ func _input(event: InputEvent) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	
+	if _stop_move:
+		return
 	
 	if not is_on_floor():
 		velocity.y -= ProjectSettings.get_setting("physics/3d/default_gravity") * delta
@@ -46,3 +60,16 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 		
 	move_and_slide()
+
+
+func _on_interact_detection_area_3d_area_entered(area: Area3D) -> void:
+	if _interact_area == null:
+		_interact_area = area
+		interact_label.show()
+
+
+func _on_interact_detection_area_3d_area_exited(area: Area3D) -> void:
+	if area == _interact_area:
+		_interact_area = null
+		
+	interact_label.hide()

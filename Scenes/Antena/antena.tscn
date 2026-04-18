@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dc3p74akolj3b" path="res://Scenes/Antena/antena.gd" id="1_w6kpv"]
 [ext_resource type="PackedScene" uid="uid://bwroakmkgt6pj" path="res://Scenes/Signal/ld_signal.tscn" id="2_j5802"]
+[ext_resource type="PackedScene" uid="uid://dblcnc3xpei0v" path="res://Scenes/Interactable/interactable.tscn" id="3_j5802"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w6kpv"]
 
@@ -11,8 +12,26 @@
 sections = 2
 section_rings = 1
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w6kpv"]
+
+[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_w6kpv"]
+radius = 0.4
+sections = 2
+section_length = 0.21
+section_rings = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j5802"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_j5802"]
+inner_radius = 0.05
+outer_radius = 0.06
+rings = 8
+ring_segments = 6
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j5802"]
+
 [node name="Antena" type="StaticBody3D" unique_id=499436219]
-collision_layer = 2
+collision_layer = 18
 collision_mask = 5
 script = ExtResource("1_w6kpv")
 signal_scene = ExtResource("2_j5802")
@@ -25,16 +44,49 @@ shape = SubResource("BoxShape3D_w6kpv")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("BoxMesh_av0w1")
 
-[node name="CSGMesh3D" type="CSGMesh3D" parent="." unique_id=8451087]
-transform = Transform3D(1, 0, 0, 0, -0.50000006, -0.8660254, 0, 0.8660254, -0.50000006, 0, 1.5, 0)
+[node name="AntenaPivotPoint" type="Marker3D" parent="." unique_id=1884495132]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="AntenaOutCSGMesh3D" type="CSGMesh3D" parent="AntenaPivotPoint" unique_id=8451087]
+transform = Transform3D(1, 0, 0, 0, -0.50000006, -0.8660254, 0, 0.8660254, -0.50000006, 0, 0, 0)
 mesh = SubResource("TubeTrailMesh_b0ucf")
+material = SubResource("StandardMaterial3D_w6kpv")
+
+[node name="AntenaInsCSGMesh3D" type="CSGMesh3D" parent="AntenaPivotPoint/AntenaOutCSGMesh3D" unique_id=1156761574]
+operation = 2
+mesh = SubResource("TubeTrailMesh_w6kpv")
+material = SubResource("StandardMaterial3D_j5802")
+
+[node name="CrosMeshInstance3D" type="MeshInstance3D" parent="AntenaPivotPoint/AntenaOutCSGMesh3D" unique_id=1394229017]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+mesh = SubResource("TorusMesh_j5802")
+
+[node name="TargetCamera3D" type="Camera3D" parent="AntenaPivotPoint/AntenaOutCSGMesh3D" unique_id=2072039109]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.15306461, -6.6906694e-09)
+fov = 80.0
+
+[node name="RayCast3D" type="RayCast3D" parent="AntenaPivotPoint/AntenaOutCSGMesh3D" unique_id=744877413]
+unique_name_in_owner = true
+target_position = Vector3(0, -100, 0)
+collision_mask = 64
 
 [node name="SignalEmitMarker3D" type="Marker3D" parent="." unique_id=1092486383]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.75)
 
+[node name="Interactable" parent="." unique_id=1748806837 node_paths=PackedStringArray("antena") instance=ExtResource("3_j5802")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+antena = NodePath("..")
+
+[node name="CollisionShape3D" parent="Interactable" index="0" unique_id=675170021]
+shape = SubResource("BoxShape3D_j5802")
+
 [node name="EmitTimer" type="Timer" parent="." unique_id=1428322708]
 unique_name_in_owner = true
-autostart = true
+wait_time = 0.5
 
 [connection signal="timeout" from="EmitTimer" to="." method="_on_emit_timer_timeout"]
+
+[editable path="Interactable"]
