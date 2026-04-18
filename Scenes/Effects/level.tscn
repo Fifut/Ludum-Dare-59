@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://4wi5frna7rru"]
+
+[ext_resource type="Script" uid="uid://c2ny1mko0qjff" path="res://Scenes/Effects/level.gd" id="1_6bsj5"]
+[ext_resource type="PackedScene" uid="uid://bp8ebm28hb678" path="res://Scenes/Effects/spawn_particles.tscn" id="2_3xmc8"]
+[ext_resource type="AudioStream" uid="uid://p3mjmhi62ijm" path="res://Assets/Sounds/level.wav" id="3_kmwc5"]
+
+[node name="Level" type="Node3D" unique_id=1159741071]
+script = ExtResource("1_6bsj5")
+
+[node name="SpawnParticles" parent="." unique_id=1946728361 instance=ExtResource("2_3xmc8")]
+
+[node name="LevelAudio" type="AudioStreamPlayer3D" parent="." unique_id=202376560]
+unique_name_in_owner = true
+stream = ExtResource("3_kmwc5")
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

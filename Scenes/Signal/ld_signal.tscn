@@ -39,3 +39,10 @@ mesh = SubResource("SphereMesh_jk8s2")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2066487265]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0007171631)
 shape = SubResource("SphereShape3D_6cmjg")
+
+[node name="Timer" type="Timer" parent="." unique_id=1667282065]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

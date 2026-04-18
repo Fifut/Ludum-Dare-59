@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://siuqj3a2xtur"]
 
 [ext_resource type="Script" uid="uid://b1wnly54buayr" path="res://Scenes/Mirror/mirror.gd" id="1_3iobw"]
+[ext_resource type="FontFile" uid="uid://d32duxbramq05" path="res://Assets/Fonts/KodeMono-Regular.ttf" id="2_t076n"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_38ylo"]
 
@@ -39,3 +40,6 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6425785, 0)
 billboard = 2
 text = "45"
+font = ExtResource("2_t076n")
+font_size = 60
+outline_size = 8

@@ -6,3 +6,7 @@ class_name LDSignal extends RigidBody3D
 
 func _ready() -> void:
 	apply_central_impulse(global_transform.basis.z * speed)
+
+
+func _on_timer_timeout() -> void:
+	queue_free()

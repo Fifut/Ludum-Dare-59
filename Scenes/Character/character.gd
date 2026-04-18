@@ -1,8 +1,8 @@
 class_name Player extends CharacterBody3D
 
+@export var grid: Grid
 
 @onready var camera: Camera3D = $Camera3D
-
 @onready var interact_label: Label = %InteractLabel
 
 const SPEED: float = 5.0
@@ -52,6 +52,8 @@ func _input(event: InputEvent) -> void:
 		_interact.global_rotation_degrees = _grab_rotation
 	
 	
+	grid.visible = _grab_in_progress
+		
 	
 	if event is InputEventMouseMotion and not _stop_move:
 		rotate_y(-event.relative.x * MOUSE_SENSITIVITY)

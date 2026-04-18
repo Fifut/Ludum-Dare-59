@@ -1,9 +1,14 @@
 [gd_scene format=3 uid="uid://bnv3y5qhckxb3"]
 
 [ext_resource type="Script" uid="uid://dhhcl8gb50ym4" path="res://Scenes/Receiver/receiver.gd" id="1_mtts3"]
+[ext_resource type="FontFile" uid="uid://d32duxbramq05" path="res://Assets/Fonts/KodeMono-Regular.ttf" id="2_5cvh0"]
 [ext_resource type="AudioStream" uid="uid://d4c21kgvgl50v" path="res://Assets/Sounds/beep_in.wav" id="2_bomn8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e1iml"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5cvh0"]
+height = 0.1
+radius = 0.45
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mtts3"]
 albedo_color = Color(0.5660922, 1.7688051e-06, 3.3691526e-07, 1)
@@ -27,10 +32,6 @@ radius = 0.45
 height = 0.2
 is_hemisphere = true
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_5cvh0"]
-height = 0.1
-radius = 0.45
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_82c2j"]
 shading_mode = 0
 albedo_color = Color(0.41598046, 0.41598043, 0.4159804, 1)
@@ -38,7 +39,7 @@ billboard_mode = 2
 
 [sub_resource type="QuadMesh" id="QuadMesh_lg2ox"]
 material = SubResource("StandardMaterial3D_82c2j")
-size = Vector2(0.15, 1)
+size = Vector2(0.3, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5cvh0"]
 shading_mode = 0
@@ -46,8 +47,8 @@ albedo_color = Color(0, 1, 0, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_82c2j"]
 material = SubResource("StandardMaterial3D_5cvh0")
-top_radius = 0.04
-bottom_radius = 0.04
+top_radius = 0.08
+bottom_radius = 0.08
 height = 1.0
 
 [node name="Receiver" type="StaticBody3D" unique_id=629734283]
@@ -61,14 +62,6 @@ script = ExtResource("1_mtts3")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_e1iml")
 
-[node name="BaseMeshInstance3D" type="MeshInstance3D" parent="." unique_id=31843767]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-mesh = SubResource("BoxMesh_mtts3")
-
-[node name="ReceiverMeshInstance3D" type="MeshInstance3D" parent="BaseMeshInstance3D" unique_id=1203342142]
-transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, 0.99999994, 0, -0.99999994, -4.3711385e-08, 0, 0, 0.65)
-mesh = SubResource("SphereMesh_bomn8")
-
 [node name="ReceiverArea3D" type="Area3D" parent="." unique_id=1596322900]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.6)
 collision_layer = 8
@@ -79,10 +72,13 @@ transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, 
 shape = SubResource("CylinderShape3D_5cvh0")
 metadata/_edit_lock_ = true
 
-[node name="ReceivedAudio" type="AudioStreamPlayer3D" parent="." unique_id=1268236112]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
-stream = ExtResource("2_bomn8")
+[node name="BaseMeshInstance3D" type="MeshInstance3D" parent="." unique_id=31843767]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_mtts3")
+
+[node name="ReceiverMeshInstance3D" type="MeshInstance3D" parent="BaseMeshInstance3D" unique_id=1203342142]
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, 0.99999994, 0, -0.99999994, -4.3711385e-08, 0, 0, 0.65)
+mesh = SubResource("SphereMesh_bomn8")
 
 [node name="GaugeMesh" type="MeshInstance3D" parent="." unique_id=1443685884]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
@@ -92,7 +88,22 @@ mesh = SubResource("QuadMesh_lg2ox")
 unique_name_in_owner = true
 mesh = SubResource("CylinderMesh_82c2j")
 
+[node name="CountLabel" type="Label3D" parent="." unique_id=1634150156]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.18, 0)
+billboard = 2
+text = "0/5"
+font = ExtResource("2_5cvh0")
+font_size = 60
+outline_size = 8
+
+[node name="ReceivedAudio" type="AudioStreamPlayer3D" parent="." unique_id=1268236112]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+stream = ExtResource("2_bomn8")
+
 [node name="DecreaseTimer" type="Timer" parent="." unique_id=199117093]
+unique_name_in_owner = true
 autostart = true
 
 [connection signal="body_entered" from="ReceiverArea3D" to="." method="_on_receiver_area_3d_body_entered"]

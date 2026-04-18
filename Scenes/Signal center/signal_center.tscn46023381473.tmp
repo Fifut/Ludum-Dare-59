@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://csv74ymohjtbx" path="res://Scenes/Signal center/signal_center.gd" id="1_1j04r"]
 [ext_resource type="PackedScene" uid="uid://b3jqq5cnlnx21" path="res://Scenes/Character/character.tscn" id="1_vmgcc"]
 [ext_resource type="PackedScene" uid="uid://bq5bia4e8hcfp" path="res://Scenes/Antenna/antenna.tscn" id="2_r3mnd"]
-[ext_resource type="PackedScene" uid="uid://2w58twejly7l" path="res://Scenes/Effects/grid.tscn" id="2_souhl"]
 [ext_resource type="PackedScene" uid="uid://bnv3y5qhckxb3" path="res://Scenes/Receiver/receiver.tscn" id="3_5otu1"]
 [ext_resource type="PackedScene" uid="uid://dj41dpi6ufpw1" path="res://Scenes/Orbit/orbit.tscn" id="4_nyj3w"]
 [ext_resource type="PackedScene" uid="uid://siuqj3a2xtur" path="res://Scenes/Mirror/mirror.tscn" id="6_phun2"]
@@ -87,16 +86,16 @@ albedo_color = Color(0, 0.32097834, 1.92523e-07, 1)
 metallic = 0.12
 roughness = 0.6
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_souhl"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_32ct8"]
 resource_local_to_scene = true
 vertex_color_use_as_albedo = true
 albedo_color = Color(0.29219002, 0.29219005, 0.29219002, 1)
 metallic = 0.5
 roughness = 0.5
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_gigjs"]
+[sub_resource type="CylinderMesh" id="CylinderMesh_souhl"]
 resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_souhl")
+material = SubResource("StandardMaterial3D_32ct8")
 top_radius = 0.05
 bottom_radius = 0.05
 height = 0.1
@@ -119,10 +118,6 @@ unique_name_in_owner = true
 transform = Transform3D(-4.3711385e-08, -0.99999994, 0, 0.9999999, -4.3711385e-08, 0, 0, 0, 0.99999994, 0, 6.5963516, 0)
 visible = false
 mesh = SubResource("SphereMesh_5drxl")
-
-[node name="Grid" parent="." unique_id=1835648231 instance=ExtResource("2_souhl")]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.5, 0.01, -50.5)
 
 [node name="FloorStaticBody3D" type="StaticBody3D" parent="." unique_id=395930621]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
@@ -166,18 +161,16 @@ shape = SubResource("BoxShape3D_nyj3w")
 transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, 0, 0, 80)
 shape = SubResource("BoxShape3D_nyj3w")
 
-[node name="Character" parent="." unique_id=2029105437 node_paths=PackedStringArray("grid") instance=ExtResource("1_vmgcc")]
+[node name="Character" parent="." unique_id=2029105437 instance=ExtResource("1_vmgcc")]
 transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, 15.7492695, 0, -5.8377905)
-grid = NodePath("../Grid")
 
 [node name="Orbit" parent="." unique_id=251649051 instance=ExtResource("4_nyj3w")]
 
 [node name="Receivers" type="Node3D" parent="." unique_id=1080233647]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 
 [node name="Receiver1" parent="Receivers" unique_id=1853702718 instance=ExtResource("3_5otu1")]
 unique_name_in_owner = true
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 2)
 max_ld_signal = 3
 
 [node name="Trees" type="Node3D" parent="." unique_id=2140059900]
@@ -809,40 +802,40 @@ surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
 [node name="Level1" type="Node3D" parent="." unique_id=1244060405]
 
 [node name="Antenna1" parent="Level1" unique_id=499436219 instance=ExtResource("2_r3mnd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.5489435)
 
 [node name="GunMeshInstance3D" parent="Level1/Antenna1" index="2" unique_id=773715414]
-mesh = SubResource("CylinderMesh_gigjs")
+mesh = SubResource("CylinderMesh_souhl")
 
 [node name="AntenaPivotPoint" parent="Level1/Antenna1" index="3" unique_id=1884495132]
 transform = Transform3D(0.99939084, 0.025523871, 0.023801396, 0, 0.6819983, -0.73135364, -0.034899496, 0.73090816, 0.68158287, 0, 1.5, 0)
 
 [node name="Mirror1" parent="Level1" unique_id=1972094085 instance=ExtResource("6_phun2")]
-transform = Transform3D(0.8660253, 0, -0.49999997, 0, 1, 0, 0.49999997, 0, 0.8660253, 0, 0, -2)
+transform = Transform3D(0.76604444, 0, -0.6427876, 0, 1, 0, 0.6427876, 0, 0.76604444, -0.41321373, 0, -1.9539728)
 
 [node name="Level2" parent="." unique_id=234299002 instance=ExtResource("7_gigjs")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.517, 0, 3.473)
 
 [node name="Antenna1" parent="Level2" unique_id=384781390 instance=ExtResource("2_r3mnd")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2, 0, 0.707)
 
 [node name="Level3" parent="." unique_id=1159741071 instance=ExtResource("7_gigjs")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.478163, 0, -9.600997)
 
 [node name="Antenna1" parent="Level3" unique_id=144193462 instance=ExtResource("2_r3mnd")]
-transform = Transform3D(0.7071067, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, 0.7071067, 2, 0, 1)
+transform = Transform3D(0.7071067, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, 0.7071067, 1.410161, 0, 0.7036238)
 
 [node name="Mirror1" parent="Level3" unique_id=1907107573 instance=ExtResource("6_phun2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9285393, 9.536743e-07, -0.73148537)
 
 [node name="Level4" parent="." unique_id=1462984352 instance=ExtResource("7_gigjs")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.019823, 0, -6.8750863)
 
 [node name="Antenna1" parent="Level4" unique_id=1500031079 instance=ExtResource("2_r3mnd")]
-transform = Transform3D(0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, 0.7071067, 0, 0, 0)
+transform = Transform3D(0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, 0.7071067, 0.82018566, 0, -1.4232631)
 
 [node name="UI" type="Control" parent="." unique_id=1037403920]
 layout_mode = 3

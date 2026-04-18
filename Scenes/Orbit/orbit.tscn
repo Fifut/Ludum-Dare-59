@@ -10,5 +10,21 @@ script = ExtResource("1_i5e8t")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 150, -150)
 
 [node name="Planet2" parent="." unique_id=1168377731 instance=ExtResource("1_sgmnj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150, 100, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 150, 100, 0)
 color = Color(1, 1, 0, 1)
+
+[node name="Planet3" parent="." unique_id=1179467177 instance=ExtResource("1_sgmnj")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -60.06009, 78.08533, 125.07392)
+color = Color(1, 0, 0.7833333, 1)
+
+[node name="Planet4" parent="." unique_id=1920972987 instance=ExtResource("1_sgmnj")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 47.90973, 171.62354, 147.5231)
+color = Color(0.030530779, 0.68115515, 0, 1)
+
+[node name="Planet5" parent="." unique_id=137005719 instance=ExtResource("1_sgmnj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -151.99475, 119.77661, -81.77911)
+color = Color(1, 0, 0, 1)
+
+[node name="Planet6" parent="." unique_id=976150906 instance=ExtResource("1_sgmnj")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 170.84564, 80.75784, -88.193146)
+color = Color(4.6205523e-06, 0.5583457, 0.5492263, 1)

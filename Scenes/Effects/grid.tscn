@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://2w58twejly7l"]
+
+[ext_resource type="Script" uid="uid://dqyr5nys8jrxy" path="res://Scenes/Effects/grid.gd" id="1_y5l88"]
+
+[node name="Grid" type="Node3D" unique_id=1835648231]
+script = ExtResource("1_y5l88")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=653270931]
+unique_name_in_owner = true

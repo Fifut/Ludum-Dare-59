@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://bp8ebm28hb678"]
+
+[ext_resource type="Script" uid="uid://bjuovel64jf3y" path="res://Scenes/Effects/spawn_particles.gd" id="1_l8wut"]
+
+[sub_resource type="Curve" id="Curve_5drxl"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.1716058, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_32ct8"]
+curve = SubResource("Curve_5drxl")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_souhl"]
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = -179.99998
+angle_max = 180.00002
+direction = Vector3(0, 1, 0)
+spread = 90.0
+initial_velocity_min = 8.0
+initial_velocity_max = 10.0
+angular_velocity_min = -180.00002
+angular_velocity_max = 179.99998
+gravity = Vector3(0, 0, 0)
+scale_min = 0.5
+alpha_curve = SubResource("CurveTexture_32ct8")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gigjs"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 1, 0, 1)
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_o0o1q"]
+material = SubResource("StandardMaterial3D_gigjs")
+size = Vector2(0.1, 0.1)
+
+[node name="SpawnParticles" type="GPUParticles3D" unique_id=1946728361]
+emitting = false
+amount = 200
+one_shot = true
+explosiveness = 1.0
+visibility_aabb = AABB(-50, 0, -50, 100, 50, 100)
+process_material = SubResource("ParticleProcessMaterial_souhl")
+draw_pass_1 = SubResource("QuadMesh_o0o1q")
+script = ExtResource("1_l8wut")
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
