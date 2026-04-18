@@ -7,8 +7,8 @@
 script = ExtResource("1_i5e8t")
 
 [node name="Planet1" parent="." unique_id=2102530368 instance=ExtResource("1_sgmnj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, -40)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 150, -150)
 
 [node name="Planet2" parent="." unique_id=1168377731 instance=ExtResource("1_sgmnj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 10, 40)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150, 100, 0)
 color = Color(1, 1, 0, 1)

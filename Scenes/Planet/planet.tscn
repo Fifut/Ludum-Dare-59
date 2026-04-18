@@ -21,8 +21,11 @@ emission_texture = SubResource("NoiseTexture2D_2exh7")
 [sub_resource type="SphereMesh" id="SphereMesh_0piag"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_phun2")
+radius = 4.0
+height = 8.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_510pn"]
+radius = 2.0
 
 [node name="Planet" type="StaticBody3D" unique_id=1179467177]
 collision_layer = 64

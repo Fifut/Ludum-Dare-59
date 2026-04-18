@@ -23,37 +23,41 @@ ambient_light_source = 2
 tonemap_mode = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8g4dc"]
-size = Vector3(50, 1, 50)
+size = Vector3(200, 1, 200)
+
+[sub_resource type="Gradient" id="Gradient_nyj3w"]
+colors = PackedColorArray(0, 0.14824149, 0, 1, 1.8349849e-07, 0.2261279, 5.2943824e-07, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_5otu1"]
 noise_type = 3
 seed = 2
-frequency = 0.95
+frequency = 0.99
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nyj3w"]
+width = 1024
+height = 1024
 noise = SubResource("FastNoiseLite_5otu1")
+color_ramp = SubResource("Gradient_nyj3w")
 seamless = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2exh7"]
-albedo_color = Color(1.5642495e-07, 0.19606712, 1.6845763e-07, 1)
+vertex_color_use_as_albedo = true
 albedo_texture = SubResource("NoiseTexture2D_nyj3w")
 roughness = 0.63
 
 [sub_resource type="BoxMesh" id="BoxMesh_phun2"]
 material = SubResource("StandardMaterial3D_2exh7")
-size = Vector3(50, 1, 50)
+size = Vector3(100, 1, 100)
 
-[sub_resource type="BoxMesh" id="BoxMesh_8g4dc"]
-size = Vector3(50, 1, 50)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vmgcc"]
-albedo_color = Color(0.28118682, 0.28118688, 0.28118682, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_nyj3w"]
+size = Vector3(1, 20, 160)
 
 [node name="Signal center" type="Node3D" unique_id=144197496]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=304732385]
 transform = Transform3D(0.7071068, -0.61237246, 0.35355332, 0, 0.49999997, 0.8660254, -0.7071068, -0.61237246, 0.35355332, 0, 100, 0)
 light_color = Color(0.47007585, 0.47007585, 0.47007585, 1)
+light_energy = 2.0
 shadow_enabled = true
 sky_mode = 1
 
@@ -67,13 +71,40 @@ collision_layer = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FloorStaticBody3D" unique_id=130257529]
 shape = SubResource("BoxShape3D_8g4dc")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="FloorStaticBody3D" unique_id=1067422812]
+[node name="GrassMesh1" type="MeshInstance3D" parent="FloorStaticBody3D" unique_id=1067422812]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 0, -50)
 mesh = SubResource("BoxMesh_phun2")
 
-[node name="CSGMesh3D" type="CSGMesh3D" parent="FloorStaticBody3D" unique_id=1330495932]
-visible = false
-mesh = SubResource("BoxMesh_8g4dc")
-material = SubResource("StandardMaterial3D_vmgcc")
+[node name="GrassMesh2" type="MeshInstance3D" parent="FloorStaticBody3D" unique_id=1334071563]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, -50)
+mesh = SubResource("BoxMesh_phun2")
+
+[node name="GrassMesh3" type="MeshInstance3D" parent="FloorStaticBody3D" unique_id=994725109]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 0, 50)
+mesh = SubResource("BoxMesh_phun2")
+
+[node name="GrassMesh4" type="MeshInstance3D" parent="FloorStaticBody3D" unique_id=1335785212]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 50)
+mesh = SubResource("BoxMesh_phun2")
+
+[node name="WallsStaticBody3D" type="StaticBody3D" parent="." unique_id=52478533]
+collision_layer = 2
+
+[node name="CollisionShape3D1" type="CollisionShape3D" parent="WallsStaticBody3D" unique_id=1432860560]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80, 0, 0)
+shape = SubResource("BoxShape3D_nyj3w")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="WallsStaticBody3D" unique_id=910053597]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -80)
+shape = SubResource("BoxShape3D_nyj3w")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="WallsStaticBody3D" unique_id=1230580632]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80, 0, 0)
+shape = SubResource("BoxShape3D_nyj3w")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="WallsStaticBody3D" unique_id=1502672759]
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, 0, 0, 80)
+shape = SubResource("BoxShape3D_nyj3w")
 
 [node name="Character" parent="." unique_id=2029105437 instance=ExtResource("1_vmgcc")]
 transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, 5, 0, 0)

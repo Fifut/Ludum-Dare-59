@@ -22,7 +22,12 @@ section_rings = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j5802"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gwanj"]
+shading_mode = 0
+albedo_color = Color(1, 0.40724552, 0.338652, 1)
+
 [sub_resource type="TorusMesh" id="TorusMesh_j5802"]
+material = SubResource("StandardMaterial3D_gwanj")
 inner_radius = 0.05
 outer_radius = 0.06
 rings = 8
@@ -69,7 +74,7 @@ fov = 80.0
 
 [node name="RayCast3D" type="RayCast3D" parent="AntenaPivotPoint/AntenaOutCSGMesh3D" unique_id=744877413]
 unique_name_in_owner = true
-target_position = Vector3(0, -100, 0)
+target_position = Vector3(0, -500, 0)
 collision_mask = 64
 
 [node name="SignalEmitMarker3D" type="Marker3D" parent="." unique_id=1092486383]
