@@ -63,6 +63,10 @@ interact={
 
 3d/physics_engine="Jolt Physics"
 
+[project_time_traker]
+
+afk/afk_timer=120
+
 [rendering]
 
 rendering_device/driver.windows="d3d12"

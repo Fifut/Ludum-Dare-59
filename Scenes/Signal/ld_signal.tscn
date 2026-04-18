@@ -3,9 +3,11 @@
 [ext_resource type="Script" uid="uid://r8bbp41wa1x7" path="res://Scenes/Signal/ld_signal.gd" id="1_jk8s2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dsovw"]
-shading_mode = 0
 vertex_color_use_as_albedo = true
 albedo_color = Color(0, 1, 0, 1)
+emission_enabled = true
+emission = Color(0, 1, 0, 1)
+emission_energy_multiplier = 2.0
 
 [sub_resource type="PrismMesh" id="PrismMesh_dsovw"]
 material = SubResource("StandardMaterial3D_dsovw")
