@@ -1,0 +1,2 @@
+class_name LDSignal
+extends RigidBody3D

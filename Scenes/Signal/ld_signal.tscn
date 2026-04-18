@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://bwroakmkgt6pj"]
+
+[ext_resource type="Script" uid="uid://r8bbp41wa1x7" path="res://Scenes/Signal/ld_signal.gd" id="1_jk8s2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dsovw"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_dsovw"]
+material = SubResource("StandardMaterial3D_dsovw")
+size = Vector3(0.05, 0.2, 0.01)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s2ux4"]
+size = Vector3(0.02, 0.01, 0.2)
+
+[node name="LDSignal" type="RigidBody3D" unique_id=1504575994]
+top_level = true
+collision_layer = 4
+collision_mask = 3
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+linear_velocity = Vector3(0, 0, 2)
+script = ExtResource("1_jk8s2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1152311122]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("PrismMesh_dsovw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2066487265]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0007171631)
+shape = SubResource("BoxShape3D_s2ux4")

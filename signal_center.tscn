@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://dhgwygr2gtd1c"]
+
+[ext_resource type="PackedScene" uid="uid://b3jqq5cnlnx21" path="res://Scenes/Character/character.tscn" id="1_vmgcc"]
+[ext_resource type="PackedScene" uid="uid://bq5bia4e8hcfp" path="res://Scenes/Antena/antena.tscn" id="2_r3mnd"]
+[ext_resource type="PackedScene" uid="uid://bnv3y5qhckxb3" path="res://Scenes/Receiver/receiver.tscn" id="3_5otu1"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r3mnd"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Sky" id="Sky_5otu1"]
+sky_material = SubResource("ProceduralSkyMaterial_r3mnd")
+
+[sub_resource type="Environment" id="Environment_nyj3w"]
+background_mode = 2
+sky = SubResource("Sky_5otu1")
+tonemap_mode = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8g4dc"]
+size = Vector3(50, 1, 50)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8g4dc"]
+size = Vector3(50, 1, 50)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vmgcc"]
+albedo_color = Color(0.28118682, 0.28118688, 0.28118682, 1)
+
+[node name="Signal center" type="Node3D" unique_id=144197496]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=304732385]
+transform = Transform3D(0.7071068, -0.61237246, 0.35355332, 0, 0.49999997, 0.8660254, -0.7071068, -0.61237246, 0.35355332, 0, 100, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1278898658]
+environment = SubResource("Environment_nyj3w")
+
+[node name="FloorStaticBody3D" type="StaticBody3D" parent="." unique_id=395930621]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FloorStaticBody3D" unique_id=130257529]
+shape = SubResource("BoxShape3D_8g4dc")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="FloorStaticBody3D" unique_id=1330495932]
+mesh = SubResource("BoxMesh_8g4dc")
+material = SubResource("StandardMaterial3D_vmgcc")
+
+[node name="Character" parent="." unique_id=2029105437 instance=ExtResource("1_vmgcc")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, 5, 0, 0)
+
+[node name="Antena" parent="." unique_id=499436219 instance=ExtResource("2_r3mnd")]
+transform = Transform3D(0.96054167, 0, -0.27813622, 0, 1, 0, 0.27813622, 0, 0.96054167, 0, 0, -6.063)
+
+[node name="Receiver" parent="." unique_id=1853702718 instance=ExtResource("3_5otu1")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 2)
