@@ -5,4 +5,4 @@ func _process(_delta: float) -> void:
 		if not current:
 			make_current()
 		else:
-			clear_current(true)
+			current = false

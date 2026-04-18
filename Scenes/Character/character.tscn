@@ -29,8 +29,10 @@ shape = SubResource("CapsuleShape3D_vwk55")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
 current = true
+fov = 90.0
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Camera3D" unique_id=560385603]
+visible = false
 light_energy = 2.0
 spot_range = 8.0
 spot_attenuation = 0.5

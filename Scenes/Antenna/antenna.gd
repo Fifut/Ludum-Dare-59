@@ -58,8 +58,6 @@ func interact_toggle() -> bool:
 	
 	if _interact:
 		target_camera_3d.make_current()
-	else:
-		target_camera_3d.clear_current()
 
 	return _interact
 

@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://dvcu813oajup2"]
+
+[ext_resource type="Script" uid="uid://cltkovetwpmef" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://ce6hb837nlxqp" path="res://Scenes/Planet/planet.tscn" id="1_ig7tw"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ig7tw"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_0xm2m"]
+sky_material = SubResource("ProceduralSkyMaterial_ig7tw")
+
+[sub_resource type="Environment" id="Environment_h2yge"]
+background_mode = 1
+sky = SubResource("Sky_0xm2m")
+ambient_light_source = 1
+reflected_light_source = 1
+tonemap_mode = 2
+volumetric_fog_density = 0.875
+
+[node name="Main" type="Control" unique_id=1382186402]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0xm2m")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1830331388]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=862192557]
+handle_input_locally = false
+msaa_2d = 1
+msaa_3d = 1
+size = Vector2i(1280, 720)
+render_target_update_mode = 4
+
+[node name="Menu" type="Node3D" parent="SubViewportContainer/SubViewport" unique_id=912987448]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport/Menu" unique_id=1615294739]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 20, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport/Menu" unique_id=1730548669]
+environment = SubResource("Environment_h2yge")
+
+[node name="Planet" parent="SubViewportContainer/SubViewport/Menu" unique_id=1179467177 instance=ExtResource("1_ig7tw")]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/Menu" unique_id=360552822]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 10, 10)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1865741956]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 100
+
+[node name="TitleLabel" type="Label" parent="MarginContainer" unique_id=853274861]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "Catch the signals"
+
+[node name="StartButton" type="Button" parent="MarginContainer" unique_id=1283307706]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Start"
+
+[node name="Label" type="Label" parent="." unique_id=1023810269]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -70.0
+offset_right = 180.0
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 20
+text = "Ludum Dare 59"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="MarginContainer/StartButton" to="." method="_on_start_button_pressed"]

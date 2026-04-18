@@ -12,6 +12,7 @@ const MOUSE_SENSITIVITY: float = 0.001
 var _interact: Node3D = null
 var _stop_move: bool = false
 var _grab_in_progress: bool = false
+var _grab_rotation: Vector3 = Vector3.ZERO
 
 
 func _ready() -> void:
@@ -25,9 +26,11 @@ func _input(event: InputEvent) -> void:
 		
 		if _interact is Antena:
 			_stop_move = _interact.interact_toggle()
+			camera.current = not _stop_move
 		
 		elif (_interact is Receiver or _interact is Mirror) and not _grab_in_progress:
 			_grab_in_progress = true
+			_grab_rotation = _interact.global_rotation_degrees
 			_interact.reparent(self)
 		
 		elif (_interact is Receiver or _interact is Mirror) and _grab_in_progress:
@@ -36,10 +39,15 @@ func _input(event: InputEvent) -> void:
 
 	
 	if _grab_in_progress and event.is_action_pressed("rotation_left"):
-		_interact.rotation_degrees.y += 10.0
+		_interact.rotation_degrees.y += 5.0
+		_grab_rotation = _interact.global_rotation_degrees
 		
 	elif _grab_in_progress and event.is_action_pressed("rotation_right"):
-		_interact.rotation_degrees.y -= 10.0	
+		_interact.rotation_degrees.y -= 5.0	
+		_grab_rotation = _interact.global_rotation_degrees
+		
+	elif _grab_in_progress:
+		_interact.global_rotation_degrees = _grab_rotation
 	
 	
 	
@@ -58,6 +66,27 @@ func _input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	
+	if _grab_in_progress:
+		interact_label.text = "E to drop"
+		
+	elif _stop_move:
+		interact_label.text = "E to exit"
+		
+	elif _interact is Antena:
+		interact_label.text = "E to aiming"
+	
+	elif _interact is Receiver:
+		interact_label.text = "E to grab"
+	
+	elif _interact is Mirror:
+		interact_label.text = "E to grab"
+	
+	if _interact:
+		interact_label.show()
+	else:
+		interact_label.hide()
+		
+		
 	if _stop_move:
 		return
 	
@@ -86,19 +115,9 @@ func _on_interact_detection_body_entered(body: Node3D) -> void:
 		_interact = body
 		
 		print("Interact start detection : " + str(_interact))
-				
-		if _interact is Antena:
-			interact_label.text = "E to aiming"
-		
-		elif _interact is Receiver:
-			interact_label.text = "E to grab"
-		
-		interact_label.show()
 
 
 func _on_interact_detection_body_exited(body: Node3D) -> void:
 	if body == _interact:
 		print("Interact end detection : " + str(_interact))
-		
 		_interact = null	
-		interact_label.hide()

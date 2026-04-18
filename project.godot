@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Ludum Dare 59"
-run/main_scene="uid://dhgwygr2gtd1c"
+run/main_scene="uid://dvcu813oajup2"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -98,6 +98,7 @@ rotation_right={
 [project_time_traker]
 
 afk/afk_timer=120
+sections/use_external=true
 
 [rendering]
 
