@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bfta6x7yp31e6"]
+
+[ext_resource type="Script" uid="uid://c5ras0sg3dpmp" path="res://Scenes/Cameras/god_camera.gd" id="1_3a0pf"]
+
+[node name="GodCamera" type="Camera3D" unique_id=813227017]
+script = ExtResource("1_3a0pf")

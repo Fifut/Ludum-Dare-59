@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dhhcl8gb50ym4" path="res://Scenes/Receiver/receiver.gd" id="1_mtts3"]
 [ext_resource type="AudioStream" uid="uid://d4c21kgvgl50v" path="res://Assets/Sounds/beep_in.wav" id="2_bomn8"]
+[ext_resource type="PackedScene" uid="uid://xvtm2xe55qk2" path="res://Scenes/Components/grab_component.tscn" id="3_5cvh0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e1iml"]
 
@@ -28,11 +29,9 @@ is_hemisphere = true
 height = 0.1
 radius = 0.45
 
-[node name="Receiver" type="StaticBody3D" unique_id=629734283]
-collision_layer = 10
-axis_lock_linear_y = true
-axis_lock_angular_x = true
-axis_lock_angular_z = true
+[node name="Receiver" type="AnimatableBody3D" unique_id=1853702718]
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_mtts3")
 
 [node name="BaseCollisionShape3D" type="CollisionShape3D" parent="." unique_id=304673599]
@@ -61,5 +60,8 @@ metadata/_edit_lock_ = true
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
 stream = ExtResource("2_bomn8")
+
+[node name="GrabComponent" parent="." unique_id=792733347 instance=ExtResource("3_5cvh0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [connection signal="body_entered" from="ReceiverArea3D" to="." method="_on_receiver_area_3d_body_entered"]

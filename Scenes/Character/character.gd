@@ -1,4 +1,4 @@
-extends CharacterBody3D
+class_name Player extends CharacterBody3D
 
 
 @onready var camera: Camera3D = $Camera3D
@@ -9,8 +9,9 @@ const SPEED: float = 5.0
 const JUMP_VELOCITY: float = 4.5
 const MOUSE_SENSITIVITY: float = 0.001
 
-var _interact_area: Area3D = null
+var _interact: Node3D = null
 var _stop_move: bool = false
+var _grab_in_progress: bool = false
 
 
 func _ready() -> void:
@@ -20,9 +21,20 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	
-	if _interact_area:
-		if event.is_action_pressed("interact"):
-			_stop_move = _interact_area.interact_toggle()
+	if event.is_action_pressed("interact"):
+		
+		if _interact is Antena:
+			_stop_move = _interact.interact_toggle()
+		
+		elif _interact is Receiver and not _grab_in_progress:
+			_grab_in_progress = true
+			_interact.reparent(self)
+		
+		elif _interact is Receiver and _grab_in_progress:
+			_grab_in_progress = false
+			_interact.reparent(get_tree().root)
+			#_interact.get_parent().remove_child(_interact)
+			#add_child(_interact, true)
 	
 	
 	if event is InputEventMouseMotion:
@@ -62,14 +74,25 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func _on_interact_detection_area_3d_area_entered(area: Area3D) -> void:
-	if _interact_area == null:
-		_interact_area = area
+
+func _on_interact_detection_body_entered(body: Node3D) -> void:
+	if not _interact:
+		_interact = body
+		
+		print("Interact start detection : " + str(_interact))
+				
+		if _interact is Antena:
+			interact_label.text = "E to aiming"
+		
+		elif _interact is Receiver:
+			interact_label.text = "E to grab"
+		
 		interact_label.show()
 
 
-func _on_interact_detection_area_3d_area_exited(area: Area3D) -> void:
-	if area == _interact_area:
-		_interact_area = null
+func _on_interact_detection_body_exited(body: Node3D) -> void:
+	if body == _interact:
+		print("Interact end detection : " + str(_interact))
 		
-	interact_label.hide()
+		_interact = null	
+		interact_label.hide()

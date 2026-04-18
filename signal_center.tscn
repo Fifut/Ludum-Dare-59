@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bq5bia4e8hcfp" path="res://Scenes/Antena/antena.tscn" id="2_r3mnd"]
 [ext_resource type="PackedScene" uid="uid://bnv3y5qhckxb3" path="res://Scenes/Receiver/receiver.tscn" id="3_5otu1"]
 [ext_resource type="PackedScene" uid="uid://dj41dpi6ufpw1" path="res://Scenes/Orbit/orbit.tscn" id="4_nyj3w"]
+[ext_resource type="PackedScene" uid="uid://bfta6x7yp31e6" path="res://Scenes/Cameras/god_camera.tscn" id="5_2exh7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r3mnd"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -64,6 +65,9 @@ sky_mode = 1
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1278898658]
 environment = SubResource("Environment_nyj3w")
 
+[node name="GodCamera" parent="." unique_id=813227017 instance=ExtResource("5_2exh7")]
+transform = Transform3D(0.7071068, -0.5, 0.5, 0, 0.7071068, 0.7071068, -0.7071068, -0.5, 0.5, 15, 15, 10)
+
 [node name="FloorStaticBody3D" type="StaticBody3D" parent="." unique_id=395930621]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 collision_layer = 2
@@ -106,13 +110,13 @@ shape = SubResource("BoxShape3D_nyj3w")
 transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, 0, 0, 80)
 shape = SubResource("BoxShape3D_nyj3w")
 
-[node name="Character" parent="." unique_id=2029105437 instance=ExtResource("1_vmgcc")]
-transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, 5, 0, 0)
-
-[node name="Antena" parent="." unique_id=499436219 instance=ExtResource("2_r3mnd")]
-transform = Transform3D(0.96054167, 0, -0.27813622, 0, 1, 0, 0.27813622, 0, 0.96054167, 0, 0, -6.063)
+[node name="Orbit" parent="." unique_id=251649051 instance=ExtResource("4_nyj3w")]
 
 [node name="Receiver" parent="." unique_id=1853702718 instance=ExtResource("3_5otu1")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 2)
 
-[node name="Orbit" parent="." unique_id=251649051 instance=ExtResource("4_nyj3w")]
+[node name="Antena" parent="." unique_id=499436219 instance=ExtResource("2_r3mnd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.063)
+
+[node name="Character" parent="." unique_id=2029105437 instance=ExtResource("1_vmgcc")]
+transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, 5, 0, 0)
