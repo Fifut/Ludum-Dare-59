@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Ludum Dare 59"
+config/name="Catch The Signals"
+config/version="1.0.0"
 run/main_scene="uid://dvcu813oajup2"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 boot_splash/stretch_mode=0
