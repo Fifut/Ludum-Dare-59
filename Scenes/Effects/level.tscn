@@ -8,6 +8,7 @@
 script = ExtResource("1_6bsj5")
 
 [node name="SpawnParticles" parent="." unique_id=1946728361 instance=ExtResource("2_3xmc8")]
+visibility_aabb = AABB(-5, 0, -5, 10, 5, 10)
 
 [node name="LevelAudio" type="AudioStreamPlayer3D" parent="." unique_id=202376560]
 unique_name_in_owner = true

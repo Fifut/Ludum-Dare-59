@@ -1,8 +1,9 @@
 extends Node3D
 
 @onready var level_label: Label = %LevelLabel
-@onready var game_over_label: Label = %GameOverLabel
 @onready var timer_label: Label = %TimerLabel
+@onready var game_over_container: VBoxContainer = %GameOverContainer
+@onready var timer_end_label: Label = %TimerEndLabel
 
 @onready var receiver_1: Receiver = %Receiver1
 
@@ -15,7 +16,7 @@ var _level: int = 1
 var _start_time: int = 0
 
 func _ready() -> void:
-	game_over_label.hide()
+	game_over_container.hide()
 	
 	_start_time = Time.get_ticks_msec()
 
@@ -29,6 +30,9 @@ func _process(delta: float) -> void:
 		timer_label.text = str(minute) + ":0" + str(second)
 	else:
 		timer_label.text = str(minute) + ":" + str(second)
+	
+	if Input.is_action_just_pressed("Restart"):
+		get_tree().change_scene_to_packed(preload("uid://dhgwygr2gtd1c"))
 	
 	if Input.is_action_just_pressed("camera_god"):
 		_next_level()
@@ -60,4 +64,5 @@ func _next_level():
 			
 		5:
 			level_label.text = "5"
-			game_over_label.show()
+			game_over_container.show()
+			timer_end_label.text = timer_label.text

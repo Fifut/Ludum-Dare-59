@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c73ksinnc5fnp"]
+
+[ext_resource type="Script" uid="uid://s5btyxrbp4vv" path="res://Scenes/Pin/trees.gd" id="1_dgyoe"]
+
+[node name="Trees" type="Node3D" unique_id=2093633875]
+script = ExtResource("1_dgyoe")

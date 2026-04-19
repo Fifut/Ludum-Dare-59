@@ -45,7 +45,7 @@ func _input(event: InputEvent) -> void:
 		#elif (_interact is Receiver or _interact is Mirror) and _grab_in_progress:		
 			_grab_in_progress = false
 			_interact.grabbed = false
-			_interact.reparent(get_tree().root)
+			_interact.reparent(get_parent())
 
 	
 	if _interact and _grab_in_progress and event.is_action_pressed("rotation_left"):
@@ -105,8 +105,8 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= ProjectSettings.get_setting("physics/3d/default_gravity") * delta
 		
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		#velocity.y = JUMP_VELOCITY
 		
 	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dy2kb3umf2utg"]
+
+[ext_resource type="PackedScene" uid="uid://ddxp6kh2n0ong" path="res://Assets/3D/Pin.glb" id="1_y50u7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rejyg"]
+albedo_color = Color(0, 0.20896336, 9.62615e-08, 1)
+
+[node name="Pin" unique_id=1641910093 instance=ExtResource("1_y50u7")]
+
+[node name="Solide1" parent="." index="0" unique_id=1217299821]
+surface_material_override/0 = SubResource("StandardMaterial3D_rejyg")

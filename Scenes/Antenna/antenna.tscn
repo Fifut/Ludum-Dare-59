@@ -24,6 +24,23 @@ albedo_color = Color(0.34615496, 3.3691526e-07, 2.4065375e-07, 1)
 metallic = 0.5
 roughness = 0.5
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1iavp"]
+shading_mode = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2aku6"]
+material = SubResource("StandardMaterial3D_1iavp")
+size = Vector2(0.02, 0.11)
+orientation = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n5m05"]
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_nme4w"]
+material = SubResource("StandardMaterial3D_n5m05")
+size = Vector2(0.01, 0.1)
+orientation = 2
+
 [sub_resource type="Curve" id="Curve_k6ybw"]
 _data = [Vector2(0, 1), 0.0, -0.2497213, 0, 0, Vector2(1, 0), -1.1933742, 0.0, 0, 0]
 point_count = 2
@@ -51,6 +68,28 @@ billboard_mode = 2
 [sub_resource type="QuadMesh" id="QuadMesh_n4rac"]
 material = SubResource("StandardMaterial3D_3esc4")
 size = Vector2(0.025, 0.025)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n4rac"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0, 0, 1)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1iavp"]
+material = SubResource("StandardMaterial3D_n4rac")
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.75
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2aku6"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.09411765)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_n5m05"]
+material = SubResource("StandardMaterial3D_2aku6")
+top_radius = 0.12
+bottom_radius = 0.12
+height = 0.8
 
 [node name="Antenna" type="StaticBody3D" unique_id=499436219]
 collision_layer = 18
@@ -99,6 +138,15 @@ transform = Transform3D(1, 0, 0, 0, 0.86602557, 0.5000001, 0, -0.5000001, 0.8660
 light_color = Color(1, 1, 0.7372549, 1)
 omni_range = 0.5599975
 
+[node name="OriginProgressSmallMesh" type="MeshInstance3D" parent="AntenaPivotPoint" unique_id=460131644]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11987007, 0, -0.14301872)
+mesh = SubResource("PlaneMesh_2aku6")
+
+[node name="ProgressSmallMesh" type="MeshInstance3D" parent="AntenaPivotPoint/OriginProgressSmallMesh" unique_id=357020308]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0.0010737545)
+mesh = SubResource("PlaneMesh_nme4w")
+
 [node name="SignalEmitMarker3D" type="Marker3D" parent="." unique_id=1092486383]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.4)
@@ -106,10 +154,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.4)
 [node name="BeepAudio" type="AudioStreamPlayer3D" parent="." unique_id=2051965649]
 unique_name_in_owner = true
 stream = ExtResource("4_gwanj")
-
-[node name="EmitTimer" type="Timer" parent="." unique_id=1428322708]
-unique_name_in_owner = true
-wait_time = 0.5
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=481185361]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.44242883)
@@ -119,7 +163,33 @@ preprocess = 2.0
 process_material = SubResource("ParticleProcessMaterial_p84v4")
 draw_pass_1 = SubResource("QuadMesh_n4rac")
 
+[node name="OriginProgress" type="Node3D" parent="." unique_id=270707244]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28, 0.5, 0.49492484)
+
+[node name="ProgressMesh" type="MeshInstance3D" parent="OriginProgress" unique_id=1869225226]
+unique_name_in_owner = true
+mesh = SubResource("CylinderMesh_1iavp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="OriginProgress" unique_id=674217129]
+mesh = SubResource("CylinderMesh_n5m05")
+
+[node name="EmitTimer" type="Timer" parent="." unique_id=1428322708]
+unique_name_in_owner = true
+wait_time = 0.5
+
+[node name="CoolDownTimer" type="Timer" parent="." unique_id=140728483]
+unique_name_in_owner = true
+wait_time = 5.0
+one_shot = true
+
+[node name="IdleTimer" type="Timer" parent="." unique_id=1143125490]
+unique_name_in_owner = true
+wait_time = 3.0
+one_shot = true
+
 [connection signal="timeout" from="EmitTimer" to="." method="_on_emit_timer_timeout"]
+[connection signal="timeout" from="CoolDownTimer" to="." method="_on_cool_down_timer_timeout"]
+[connection signal="timeout" from="IdleTimer" to="." method="_on_idle_timer_timeout"]
 
 [editable path="Antenna base"]
 [editable path="AntenaPivotPoint/Antenna"]

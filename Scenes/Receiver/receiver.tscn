@@ -16,24 +16,24 @@ albedo_color = Color(0.42318463, 9.0846794e-07, 3.128499e-07, 1)
 metallic = 0.5
 roughness = 0.5
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5cvh0"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_82c2j"]
 vertex_color_use_as_albedo = true
 albedo_color = Color(0, 1, 0, 1)
 emission_enabled = true
 emission = Color(0, 1, 0, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_82c2j"]
-material = SubResource("StandardMaterial3D_5cvh0")
+material = SubResource("StandardMaterial3D_82c2j")
 top_radius = 0.18
 bottom_radius = 0.18
 height = 1.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_82c2j"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hf4si"]
 transparency = 1
 albedo_color = Color(1, 1, 1, 0.39215687)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_lg2ox"]
-material = SubResource("StandardMaterial3D_82c2j")
+material = SubResource("StandardMaterial3D_hf4si")
 top_radius = 0.2
 bottom_radius = 0.2
 height = 1.0
@@ -108,12 +108,12 @@ omni_range = 0.55
 
 [node name="CountLabel" type="Label3D" parent="." unique_id=1634150156]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.358169, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.818877, 0)
 billboard = 2
 text = "0/5"
 font = ExtResource("2_5cvh0")
-font_size = 60
-outline_size = 8
+font_size = 100
+outline_size = 20
 
 [node name="ReceivedAudio" type="AudioStreamPlayer3D" parent="." unique_id=1268236112]
 unique_name_in_owner = true

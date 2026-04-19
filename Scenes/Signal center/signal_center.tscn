@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dj41dpi6ufpw1" path="res://Scenes/Orbit/orbit.tscn" id="4_nyj3w"]
 [ext_resource type="PackedScene" uid="uid://siuqj3a2xtur" path="res://Scenes/Mirror/mirror.tscn" id="6_phun2"]
 [ext_resource type="PackedScene" uid="uid://4wi5frna7rru" path="res://Scenes/Effects/level.tscn" id="7_gigjs"]
-[ext_resource type="PackedScene" uid="uid://ddxp6kh2n0ong" path="res://Assets/3D/Pin.glb" id="8_1j04r"]
+[ext_resource type="PackedScene" uid="uid://c73ksinnc5fnp" path="res://Scenes/Pin/trees.tscn" id="8_o0o1q"]
 [ext_resource type="AudioStream" uid="uid://c8hp67ycvns60" path="res://Assets/Sounds/music.wav" id="9_5drxl"]
 [ext_resource type="FontFile" uid="uid://d32duxbramq05" path="res://Assets/Fonts/KodeMono-Regular.ttf" id="9_souhl"]
 
@@ -40,11 +40,6 @@ orientation = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nyj3w"]
 size = Vector3(1, 20, 160)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5drxl"]
-albedo_color = Color(0, 0.32097834, 1.92523e-07, 1)
-metallic = 0.12
-roughness = 0.6
 
 [node name="Signal center" type="Node3D" unique_id=144197496]
 script = ExtResource("1_1j04r")
@@ -104,6 +99,8 @@ shape = SubResource("BoxShape3D_nyj3w")
 [node name="Clouds" parent="." unique_id=621452626 instance=ExtResource("3_gigjs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
 
+[node name="Trees" parent="." unique_id=2093633875 instance=ExtResource("8_o0o1q")]
+
 [node name="Character" parent="." unique_id=2029105437 node_paths=PackedStringArray("grid") instance=ExtResource("1_vmgcc")]
 transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, 15.7492695, 0, -5.8377905)
 grid = NodePath("../Grid")
@@ -116,688 +113,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 2.5)
 [node name="Receiver1" parent="Receivers" unique_id=1853702718 instance=ExtResource("3_5otu1")]
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
-
-[node name="Trees" type="Node3D" parent="." unique_id=2140059900]
-
-[node name="Pin1" parent="Trees" unique_id=1641910093 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.103237, 0, -66.54234)
-
-[node name="Solide1" parent="Trees/Pin1" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin2" parent="Trees" unique_id=1033239461 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.133076, 0, -83.392166)
-
-[node name="Solide1" parent="Trees/Pin2" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin3" parent="Trees" unique_id=405391134 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.224697, 0, -71.846924)
-
-[node name="Solide1" parent="Trees/Pin3" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin4" parent="Trees" unique_id=446255262 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.93181, 0, -40.64354)
-
-[node name="Solide1" parent="Trees/Pin4" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin5" parent="Trees" unique_id=1824609462 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.92436, 0, -8.660072)
-
-[node name="Solide1" parent="Trees/Pin5" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin6" parent="Trees" unique_id=606963337 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.73154, 0, -64.35811)
-
-[node name="Solide1" parent="Trees/Pin6" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin7" parent="Trees" unique_id=852927780 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.419495, 0, -18.801163)
-
-[node name="Solide1" parent="Trees/Pin7" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin8" parent="Trees" unique_id=913797119 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.96475, 0, 29.564064)
-
-[node name="Solide1" parent="Trees/Pin8" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin9" parent="Trees" unique_id=349108038 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.114944, 0, 61.54753)
-
-[node name="Solide1" parent="Trees/Pin9" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin10" parent="Trees" unique_id=2058985890 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.665031, 0, 73.2488)
-
-[node name="Solide1" parent="Trees/Pin10" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin11" parent="Trees" unique_id=1151032367 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.359955, 0, 69.19236)
-
-[node name="Solide1" parent="Trees/Pin11" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin12" parent="Trees" unique_id=2006538437 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 73.67622, 0, 76.83719)
-
-[node name="Solide1" parent="Trees/Pin12" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin13" parent="Trees" unique_id=476483129 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.61232, 0, 33.776527)
-
-[node name="Solide1" parent="Trees/Pin13" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin14" parent="Trees" unique_id=1530316259 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.436024, 0, -86.04446)
-
-[node name="Solide1" parent="Trees/Pin14" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin15" parent="Trees" unique_id=1425438040 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.94456, 0, -86.8802)
-
-[node name="Solide1" parent="Trees/Pin15" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin16" parent="Trees" unique_id=1051035281 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.89191, 0, -91.34904)
-
-[node name="Solide1" parent="Trees/Pin16" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin17" parent="Trees" unique_id=204063435 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.599022, 0, -60.145653)
-
-[node name="Solide1" parent="Trees/Pin17" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin18" parent="Trees" unique_id=328113829 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.156, 0, -67.41575)
-
-[node name="Solide1" parent="Trees/Pin18" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin19" parent="Trees" unique_id=1937796318 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.06432, 0, -83.86022)
-
-[node name="Solide1" parent="Trees/Pin19" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin20" parent="Trees" unique_id=1972376724 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.75228, 0, -38.303276)
-
-[node name="Solide1" parent="Trees/Pin20" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin21" parent="Trees" unique_id=1033895049 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.29754, 0, 10.061949)
-
-[node name="Solide1" parent="Trees/Pin21" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin22" parent="Trees" unique_id=1584069258 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.44773, 0, 42.045418)
-
-[node name="Solide1" parent="Trees/Pin22" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin23" parent="Trees" unique_id=369578247 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.997818, 0, 53.74669)
-
-[node name="Solide1" parent="Trees/Pin23" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin24" parent="Trees" unique_id=572843189 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.027168, 0, 49.690247)
-
-[node name="Solide1" parent="Trees/Pin24" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin25" parent="Trees" unique_id=1984236274 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.34344, 0, 57.335075)
-
-[node name="Solide1" parent="Trees/Pin25" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin26" parent="Trees" unique_id=1905790186 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.27953, 0, 14.274412)
-
-[node name="Solide1" parent="Trees/Pin26" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin27" parent="Trees" unique_id=1617017726 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.832912, 0, -50.892223)
-
-[node name="Solide1" parent="Trees/Pin27" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin28" parent="Trees" unique_id=681617130 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.862751, 0, -67.74204)
-
-[node name="Solide1" parent="Trees/Pin28" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin29" parent="Trees" unique_id=130200569 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.49502, 0, -56.196804)
-
-[node name="Solide1" parent="Trees/Pin29" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin30" parent="Trees" unique_id=965668286 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.20213, 0, -24.99342)
-
-[node name="Solide1" parent="Trees/Pin30" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin31" parent="Trees" unique_id=14134768 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.19469, 0, 6.9900484)
-
-[node name="Solide1" parent="Trees/Pin31" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin32" parent="Trees" unique_id=1543048662 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.46121, 0, -48.70799)
-
-[node name="Solide1" parent="Trees/Pin32" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin33" parent="Trees" unique_id=609212780 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.14917, 0, -3.151042)
-
-[node name="Solide1" parent="Trees/Pin33" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin34" parent="Trees" unique_id=1312292165 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85.69443, 0, 45.214184)
-
-[node name="Solide1" parent="Trees/Pin34" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin35" parent="Trees" unique_id=1689411116 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.84462, 0, 77.197655)
-
-[node name="Solide1" parent="Trees/Pin35" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin36" parent="Trees" unique_id=1613142891 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.394707, 0, 88.898926)
-
-[node name="Solide1" parent="Trees/Pin36" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin37" parent="Trees" unique_id=383236593 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.63028, 0, 84.84248)
-
-[node name="Solide1" parent="Trees/Pin37" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin38" parent="Trees" unique_id=961679947 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.94655, 0, 92.48731)
-
-[node name="Solide1" parent="Trees/Pin38" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin39" parent="Trees" unique_id=1356922878 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.882645, 0, 49.426647)
-
-[node name="Solide1" parent="Trees/Pin39" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin40" parent="Trees" unique_id=1714144694 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.1657, 0, -70.39433)
-
-[node name="Solide1" parent="Trees/Pin40" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin41" parent="Trees" unique_id=1987963848 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.195538, 0, -87.244156)
-
-[node name="Solide1" parent="Trees/Pin41" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin42" parent="Trees" unique_id=1295277355 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.162235, 0, -75.69891)
-
-[node name="Solide1" parent="Trees/Pin42" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin43" parent="Trees" unique_id=1365528634 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.869347, 0, -44.495533)
-
-[node name="Solide1" parent="Trees/Pin43" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin44" parent="Trees" unique_id=301101334 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.8619, 0, -12.512067)
-
-[node name="Solide1" parent="Trees/Pin44" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin45" parent="Trees" unique_id=1475551341 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.794, 0, -68.2101)
-
-[node name="Solide1" parent="Trees/Pin45" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin46" parent="Trees" unique_id=244458204 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.48196, 0, -22.653156)
-
-[node name="Solide1" parent="Trees/Pin46" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin47" parent="Trees" unique_id=1093585504 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -93.027214, 0, 25.71207)
-
-[node name="Solide1" parent="Trees/Pin47" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin48" parent="Trees" unique_id=207484316 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.17741, 0, 57.695538)
-
-[node name="Solide1" parent="Trees/Pin48" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin49" parent="Trees" unique_id=166517561 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.727493, 0, 69.39681)
-
-[node name="Solide1" parent="Trees/Pin49" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin50" parent="Trees" unique_id=934784360 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.297493, 0, 65.34037)
-
-[node name="Solide1" parent="Trees/Pin50" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin51" parent="Trees" unique_id=994988690 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.61376, 0, 72.9852)
-
-[node name="Solide1" parent="Trees/Pin51" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin52" parent="Trees" unique_id=1926095855 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.54986, 0, 29.924534)
-
-[node name="Solide1" parent="Trees/Pin52" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin53" parent="Trees" unique_id=1436088366 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.177517, 0, -62.538826)
-
-[node name="Solide1" parent="Trees/Pin53" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin54" parent="Trees" unique_id=2076046790 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7926445, 0, -79.38865)
-
-[node name="Solide1" parent="Trees/Pin54" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin55" parent="Trees" unique_id=1560862997 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.150417, 0, -67.84341)
-
-[node name="Solide1" parent="Trees/Pin55" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin113" parent="Trees" unique_id=1708897357 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.781296, 0, -80.15475)
-metadata/_edit_group_ = true
-
-[node name="Solide1" parent="Trees/Pin113" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin56" parent="Trees" unique_id=370939879 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.85753, 0, -36.640022)
-
-[node name="Solide1" parent="Trees/Pin56" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin57" parent="Trees" unique_id=957308671 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93.85008, 0, -4.656555)
-
-[node name="Solide1" parent="Trees/Pin57" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin58" parent="Trees" unique_id=1990276048 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.805817, 0, -60.35459)
-
-[node name="Solide1" parent="Trees/Pin58" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin59" parent="Trees" unique_id=1526580023 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.493774, 0, -14.797646)
-
-[node name="Solide1" parent="Trees/Pin59" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin60" parent="Trees" unique_id=118038477 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.03903, 0, 33.56758)
-
-[node name="Solide1" parent="Trees/Pin60" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin61" parent="Trees" unique_id=59797995 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.189224, 0, 65.55105)
-
-[node name="Solide1" parent="Trees/Pin61" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin62" parent="Trees" unique_id=1519228359 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.260689, 0, 77.25232)
-
-[node name="Solide1" parent="Trees/Pin62" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin63" parent="Trees" unique_id=145859584 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.285675, 0, 73.19588)
-
-[node name="Solide1" parent="Trees/Pin63" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin64" parent="Trees" unique_id=1698225630 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.601944, 0, 80.840706)
-
-[node name="Solide1" parent="Trees/Pin64" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin65" parent="Trees" unique_id=997367856 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93.53804, 0, 37.780045)
-
-[node name="Solide1" parent="Trees/Pin65" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin66" parent="Trees" unique_id=1131944387 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.510303, 0, -82.04094)
-
-[node name="Solide1" parent="Trees/Pin66" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin67" parent="Trees" unique_id=252511815 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.203602, 0, -86.69823)
-
-[node name="Solide1" parent="Trees/Pin67" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin111" parent="Trees" unique_id=1159975368 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.203602, 0, -72.42421)
-
-[node name="Solide1" parent="Trees/Pin111" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin112" parent="Trees" unique_id=1368636615 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.519047, 0, -61.00499)
-
-[node name="Solide1" parent="Trees/Pin112" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin68" parent="Trees" unique_id=1878631172 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.81763, 0, -87.34552)
-
-[node name="Solide1" parent="Trees/Pin68" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin69" parent="Trees" unique_id=46614121 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.52474, 0, -56.142136)
-
-[node name="Solide1" parent="Trees/Pin69" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-metadata/_edit_group_ = true
-
-[node name="Pin70" parent="Trees" unique_id=553136110 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.517296, 0, -24.15867)
-
-[node name="Solide1" parent="Trees/Pin70" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin71" parent="Trees" unique_id=1797248860 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.138603, 0, -79.856705)
-
-[node name="Solide1" parent="Trees/Pin71" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin72" parent="Trees" unique_id=113780047 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.82656, 0, -34.29976)
-
-[node name="Solide1" parent="Trees/Pin72" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin73" parent="Trees" unique_id=696964702 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.37182, 0, 14.065466)
-
-[node name="Solide1" parent="Trees/Pin73" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin74" parent="Trees" unique_id=1305499987 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.52201, 0, 46.048935)
-
-[node name="Solide1" parent="Trees/Pin74" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin75" parent="Trees" unique_id=1312906425 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07209778, 0, 57.750206)
-
-[node name="Solide1" parent="Trees/Pin75" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin76" parent="Trees" unique_id=1680645637 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.95289, 0, 53.693764)
-
-[node name="Solide1" parent="Trees/Pin76" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin77" parent="Trees" unique_id=615836549 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.26916, 0, 61.338593)
-
-[node name="Solide1" parent="Trees/Pin77" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin78" parent="Trees" unique_id=1203758888 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.20525, 0, 18.27793)
-
-[node name="Solide1" parent="Trees/Pin78" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin79" parent="Trees" unique_id=468659979 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.907192, 0, -46.888706)
-
-[node name="Solide1" parent="Trees/Pin79" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin80" parent="Trees" unique_id=1533667208 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.062969, 0, -63.738525)
-
-[node name="Solide1" parent="Trees/Pin80" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin81" parent="Trees" unique_id=972232251 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.420742, 0, -52.193287)
-
-[node name="Solide1" parent="Trees/Pin81" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin82" parent="Trees" unique_id=953204294 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.12785, 0, -20.989902)
-
-[node name="Solide1" parent="Trees/Pin82" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin83" parent="Trees" unique_id=651496665 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.12041, 0, 10.993566)
-
-[node name="Solide1" parent="Trees/Pin83" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin84" parent="Trees" unique_id=811044144 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.535492, 0, -44.70447)
-
-[node name="Solide1" parent="Trees/Pin84" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin85" parent="Trees" unique_id=728046156 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.22345, 0, 0.85247517)
-
-[node name="Solide1" parent="Trees/Pin85" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin86" parent="Trees" unique_id=1318152765 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.76871, 0, 49.2177)
-
-[node name="Solide1" parent="Trees/Pin86" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin87" parent="Trees" unique_id=650424188 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.9189, 0, 81.20117)
-
-[node name="Solide1" parent="Trees/Pin87" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin88" parent="Trees" unique_id=1576111514 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5310135, 0, 92.90244)
-
-[node name="Solide1" parent="Trees/Pin88" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin89" parent="Trees" unique_id=164096704 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.556, 0, 88.846)
-
-[node name="Solide1" parent="Trees/Pin89" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin90" parent="Trees" unique_id=813657520 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.87227, 0, 96.49083)
-
-[node name="Solide1" parent="Trees/Pin90" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin91" parent="Trees" unique_id=1056556241 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90.808365, 0, 53.430164)
-
-[node name="Solide1" parent="Trees/Pin91" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin92" parent="Trees" unique_id=783093629 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.239979, 0, -66.390816)
-
-[node name="Solide1" parent="Trees/Pin92" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin93" parent="Trees" unique_id=573558273 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2698174, 0, -83.24064)
-
-[node name="Solide1" parent="Trees/Pin93" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin94" parent="Trees" unique_id=469150182 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.087955, 0, -71.6954)
-
-[node name="Solide1" parent="Trees/Pin94" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin95" parent="Trees" unique_id=1284710881 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.79507, 0, -40.492016)
-
-[node name="Solide1" parent="Trees/Pin95" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin96" parent="Trees" unique_id=1214542812 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.78762, 0, -8.50855)
-
-[node name="Solide1" parent="Trees/Pin96" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin97" parent="Trees" unique_id=846624261 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.86828, 0, -64.20658)
-
-[node name="Solide1" parent="Trees/Pin97" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin98" parent="Trees" unique_id=1134301047 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.556236, 0, -18.64964)
-
-[node name="Solide1" parent="Trees/Pin98" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin99" parent="Trees" unique_id=1093249028 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.101494, 0, 29.715588)
-
-[node name="Solide1" parent="Trees/Pin99" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin100" parent="Trees" unique_id=692458577 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.251686, 0, 61.699055)
-
-[node name="Solide1" parent="Trees/Pin100" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin101" parent="Trees" unique_id=491350867 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20126343, 0, 71.41171)
-
-[node name="Solide1" parent="Trees/Pin101" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin105" parent="Trees" unique_id=1068560980 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86.31602, 0, -7.743699)
-
-[node name="Solide1" parent="Trees/Pin105" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin106" parent="Trees" unique_id=808434968 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.09204, 0, 4.4773636)
-
-[node name="Solide1" parent="Trees/Pin106" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin107" parent="Trees" unique_id=70581052 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.304657, 0, 71.29726)
-
-[node name="Solide1" parent="Trees/Pin107" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin108" parent="Trees" unique_id=1838234657 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.881523, 0, 82.64351)
-
-[node name="Solide1" parent="Trees/Pin108" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin109" parent="Trees" unique_id=1457299996 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.929306, 0, 61.39311)
-
-[node name="Solide1" parent="Trees/Pin109" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin110" parent="Trees" unique_id=2012311171 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.25688, 0, 53.667088)
-
-[node name="Solide1" parent="Trees/Pin110" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin102" parent="Trees" unique_id=1889187958 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.223213, 0, 69.34389)
-
-[node name="Solide1" parent="Trees/Pin102" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin103" parent="Trees" unique_id=2112181724 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82.53948, 0, 76.988716)
-
-[node name="Solide1" parent="Trees/Pin103" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
-
-[node name="Pin104" parent="Trees" unique_id=2135802196 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.47558, 0, 33.92805)
-
-[node name="Solide1" parent="Trees/Pin104" index="0" unique_id=1217299821]
-surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
 
 [node name="Level1" type="Node3D" parent="." unique_id=1244060405]
 
@@ -822,17 +137,20 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -10)
 
 [node name="Antenna1" parent="Level3" unique_id=144193462 instance=ExtResource("2_r3mnd")]
-transform = Transform3D(0.7071067, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, 0.7071067, 2.5, 0, 1.5)
+transform = Transform3D(-4.3711385e-08, 0, -0.9999999, 0, 1, 0, 0.9999999, 0, -4.3711385e-08, 2.5, 0, 1.5)
 
 [node name="Mirror1" parent="Level3" unique_id=1907107573 instance=ExtResource("6_phun2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 
 [node name="Level4" parent="." unique_id=1462984352 instance=ExtResource("7_gigjs")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -9)
 
 [node name="Antenna1" parent="Level4" unique_id=1500031079 instance=ExtResource("2_r3mnd")]
-transform = Transform3D(0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, 0.7071067, -0.5, 0, 0.5)
+transform = Transform3D(0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, 0.7071067, -0.5, 0, 1)
+
+[node name="Mirror1" parent="Level4" unique_id=592254868 instance=ExtResource("6_phun2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 3)
 
 [node name="UI" type="Control" parent="." unique_id=1037403920]
 layout_mode = 3
@@ -842,15 +160,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI" unique_id=702780924]
+[node name="ColorRect" type="ColorRect" parent="UI" unique_id=1556577284]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
+anchors_preset = 10
+anchor_right = 1.0
 offset_bottom = 40.0
 grow_horizontal = 2
+color = Color(0, 0, 0, 0.45490196)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI" unique_id=702780924]
+layout_mode = 1
+offset_right = 147.0
+offset_bottom = 40.0
+alignment = 1
 
 [node name="LevelTitleLabel" type="Label" parent="UI/HBoxContainer" unique_id=289516459]
 layout_mode = 2
@@ -863,7 +186,28 @@ text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GameOverLabel" type="Label" parent="UI" unique_id=777620198]
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI" unique_id=1464578502]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -104.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="TimerLabel" type="Label" parent="UI/HBoxContainer2" unique_id=1788567933]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_souhl")
+text = "00:00"
+horizontal_alignment = 2
+
+[node name="Control" type="Control" parent="UI/HBoxContainer2" unique_id=689642286]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+
+[node name="GameOverContainer" type="VBoxContainer" parent="UI" unique_id=618987838]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -871,28 +215,40 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -18.5
-offset_right = 20.0
-offset_bottom = 18.5
+offset_left = -276.5
+offset_top = -50.5
+offset_right = 276.5
+offset_bottom = 50.5
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="GameOverLabel" type="Label" parent="UI/GameOverContainer" unique_id=777620198]
+layout_mode = 2
 theme_override_colors/font_color = Color(0, 1, 0.011764706, 1)
 theme_override_font_sizes/font_size = 40
 text = "Congratulations!
-You've finished the game."
+You've finished the game in :"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TimerLabel" type="Label" parent="UI" unique_id=1788567933]
+[node name="TimerEndLabel" type="Label" parent="UI/GameOverContainer" unique_id=572098275]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 0
-offset_right = 92.82
-offset_bottom = 39.0
-theme_override_fonts/font = ExtResource("9_souhl")
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
 text = "00:00"
-horizontal_alignment = 2
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="UI/GameOverContainer" unique_id=1422520907]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="RestartLabel" type="Label" parent="UI/GameOverContainer" unique_id=1587543491]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "R to restart"
+horizontal_alignment = 1
 
 [node name="MusicAudio" type="AudioStreamPlayer" parent="." unique_id=126822761]
 stream = ExtResource("9_5drxl")
@@ -900,119 +256,6 @@ autoplay = true
 
 [connection signal="on_level_reach" from="Receivers/Receiver1" to="." method="_on_receiver_1_on_level_reach"]
 
-[editable path="Trees/Pin1"]
-[editable path="Trees/Pin2"]
-[editable path="Trees/Pin3"]
-[editable path="Trees/Pin4"]
-[editable path="Trees/Pin5"]
-[editable path="Trees/Pin6"]
-[editable path="Trees/Pin7"]
-[editable path="Trees/Pin8"]
-[editable path="Trees/Pin9"]
-[editable path="Trees/Pin10"]
-[editable path="Trees/Pin11"]
-[editable path="Trees/Pin12"]
-[editable path="Trees/Pin13"]
-[editable path="Trees/Pin14"]
-[editable path="Trees/Pin15"]
-[editable path="Trees/Pin16"]
-[editable path="Trees/Pin17"]
-[editable path="Trees/Pin18"]
-[editable path="Trees/Pin19"]
-[editable path="Trees/Pin20"]
-[editable path="Trees/Pin21"]
-[editable path="Trees/Pin22"]
-[editable path="Trees/Pin23"]
-[editable path="Trees/Pin24"]
-[editable path="Trees/Pin25"]
-[editable path="Trees/Pin26"]
-[editable path="Trees/Pin27"]
-[editable path="Trees/Pin28"]
-[editable path="Trees/Pin29"]
-[editable path="Trees/Pin30"]
-[editable path="Trees/Pin31"]
-[editable path="Trees/Pin32"]
-[editable path="Trees/Pin33"]
-[editable path="Trees/Pin34"]
-[editable path="Trees/Pin35"]
-[editable path="Trees/Pin36"]
-[editable path="Trees/Pin37"]
-[editable path="Trees/Pin38"]
-[editable path="Trees/Pin39"]
-[editable path="Trees/Pin40"]
-[editable path="Trees/Pin41"]
-[editable path="Trees/Pin42"]
-[editable path="Trees/Pin43"]
-[editable path="Trees/Pin44"]
-[editable path="Trees/Pin45"]
-[editable path="Trees/Pin46"]
-[editable path="Trees/Pin47"]
-[editable path="Trees/Pin48"]
-[editable path="Trees/Pin49"]
-[editable path="Trees/Pin50"]
-[editable path="Trees/Pin51"]
-[editable path="Trees/Pin52"]
-[editable path="Trees/Pin53"]
-[editable path="Trees/Pin54"]
-[editable path="Trees/Pin55"]
-[editable path="Trees/Pin113"]
-[editable path="Trees/Pin56"]
-[editable path="Trees/Pin57"]
-[editable path="Trees/Pin58"]
-[editable path="Trees/Pin59"]
-[editable path="Trees/Pin60"]
-[editable path="Trees/Pin61"]
-[editable path="Trees/Pin62"]
-[editable path="Trees/Pin63"]
-[editable path="Trees/Pin64"]
-[editable path="Trees/Pin65"]
-[editable path="Trees/Pin66"]
-[editable path="Trees/Pin67"]
-[editable path="Trees/Pin111"]
-[editable path="Trees/Pin112"]
-[editable path="Trees/Pin68"]
-[editable path="Trees/Pin69"]
-[editable path="Trees/Pin70"]
-[editable path="Trees/Pin71"]
-[editable path="Trees/Pin72"]
-[editable path="Trees/Pin73"]
-[editable path="Trees/Pin74"]
-[editable path="Trees/Pin75"]
-[editable path="Trees/Pin76"]
-[editable path="Trees/Pin77"]
-[editable path="Trees/Pin78"]
-[editable path="Trees/Pin79"]
-[editable path="Trees/Pin80"]
-[editable path="Trees/Pin81"]
-[editable path="Trees/Pin82"]
-[editable path="Trees/Pin83"]
-[editable path="Trees/Pin84"]
-[editable path="Trees/Pin85"]
-[editable path="Trees/Pin86"]
-[editable path="Trees/Pin87"]
-[editable path="Trees/Pin88"]
-[editable path="Trees/Pin89"]
-[editable path="Trees/Pin90"]
-[editable path="Trees/Pin91"]
-[editable path="Trees/Pin92"]
-[editable path="Trees/Pin93"]
-[editable path="Trees/Pin94"]
-[editable path="Trees/Pin95"]
-[editable path="Trees/Pin96"]
-[editable path="Trees/Pin97"]
-[editable path="Trees/Pin98"]
-[editable path="Trees/Pin99"]
-[editable path="Trees/Pin100"]
-[editable path="Trees/Pin101"]
-[editable path="Trees/Pin105"]
-[editable path="Trees/Pin106"]
-[editable path="Trees/Pin107"]
-[editable path="Trees/Pin108"]
-[editable path="Trees/Pin109"]
-[editable path="Trees/Pin110"]
-[editable path="Trees/Pin102"]
-[editable path="Trees/Pin103"]
-[editable path="Trees/Pin104"]
 [editable path="Level1/Antenna1"]
 [editable path="Level1/Antenna1/Antenna base"]
 [editable path="Level1/Antenna1/AntenaPivotPoint/Antenna"]

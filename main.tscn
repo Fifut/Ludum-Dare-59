@@ -123,15 +123,46 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 100
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 100
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
-[node name="TitleLabel" type="Label" parent="MarginContainer" unique_id=853274861]
+[node name="HowToLabel" type="Label" parent="MarginContainer" unique_id=635070518]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 20
+text = "HOW TO PLAY:
+Use the WASD keys to move the character or the antennas
+Hold down Shift key to run or move the antennas faster
+Use the E key to pick up/drop mirrors or adjust the antennas
+Click LEFT or RIGHT to rotate the mirrors"
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer" unique_id=774995639]
+custom_minimum_size = Vector2(600, 200)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0, 0, 0, 0.5058824)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/ColorRect" unique_id=883217548]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
 size_flags_vertical = 0
+theme_override_constants/separation = 34
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/ColorRect/VBoxContainer2" unique_id=853274861]
+layout_mode = 2
+size_flags_horizontal = 4
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
@@ -139,49 +170,27 @@ theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 60
 text = "Catch the signals"
 
-[node name="StartButton" type="Button" parent="MarginContainer" unique_id=1283307706]
+[node name="StartButton" type="Button" parent="MarginContainer/ColorRect/VBoxContainer2" unique_id=1283307706]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 text = "Start"
 
-[node name="Label" type="Label" parent="." unique_id=1023810269]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -70.0
-offset_right = 180.0
-grow_vertical = 0
-size_flags_horizontal = 0
-size_flags_vertical = 8
-theme_override_font_sizes/font_size = 20
-text = "Ludum Dare 59"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2013327290]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=2013327290]
 custom_minimum_size = Vector2(90, 145)
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -89.0
-offset_top = -145.0
-grow_horizontal = 0
-grow_vertical = 0
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
 
-[node name="MusicLabel" type="Label" parent="VBoxContainer" unique_id=609052515]
+[node name="MusicLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=609052515]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Music"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MusicVSlider" type="VSlider" parent="VBoxContainer" unique_id=1411404475]
+[node name="MusicVSlider" type="VSlider" parent="MarginContainer/VBoxContainer" unique_id=1411404475]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(20, 100)
 layout_mode = 2
@@ -191,13 +200,22 @@ max_value = 1.0
 step = 0.1
 value = 1.0
 
+[node name="LDLabel" type="Label" parent="MarginContainer" unique_id=1023810269]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 20
+text = "Ludum Dare 59"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1623170280]
 stream = ExtResource("3_h2yge")
 volume_db = -5.0
 autoplay = true
 
-[connection signal="pressed" from="MarginContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="value_changed" from="VBoxContainer/MusicVSlider" to="." method="_on_music_v_slider_value_changed"]
+[connection signal="pressed" from="MarginContainer/ColorRect/VBoxContainer2/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/MusicVSlider" to="." method="_on_music_v_slider_value_changed"]
 
 [editable path="SubViewportContainer/SubViewport/Menu/Receiver"]
 [editable path="SubViewportContainer/SubViewport/Menu/Receiver/Receiver"]
