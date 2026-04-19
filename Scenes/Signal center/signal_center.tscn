@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bq5bia4e8hcfp" path="res://Scenes/Antenna/antenna.tscn" id="2_r3mnd"]
 [ext_resource type="PackedScene" uid="uid://2w58twejly7l" path="res://Scenes/Effects/grid.tscn" id="2_souhl"]
 [ext_resource type="PackedScene" uid="uid://bnv3y5qhckxb3" path="res://Scenes/Receiver/receiver.tscn" id="3_5otu1"]
+[ext_resource type="PackedScene" uid="uid://clqro0j3ivvh3" path="res://Scenes/Cloud/clouds.tscn" id="3_gigjs"]
 [ext_resource type="PackedScene" uid="uid://dj41dpi6ufpw1" path="res://Scenes/Orbit/orbit.tscn" id="4_nyj3w"]
 [ext_resource type="PackedScene" uid="uid://siuqj3a2xtur" path="res://Scenes/Mirror/mirror.tscn" id="6_phun2"]
 [ext_resource type="PackedScene" uid="uid://4wi5frna7rru" path="res://Scenes/Effects/level.tscn" id="7_gigjs"]
@@ -12,45 +13,20 @@
 [ext_resource type="AudioStream" uid="uid://c8hp67ycvns60" path="res://Assets/Sounds/music.wav" id="9_5drxl"]
 [ext_resource type="FontFile" uid="uid://d32duxbramq05" path="res://Assets/Fonts/KodeMono-Regular.ttf" id="9_souhl"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r3mnd"]
-sky_top_color = Color(0, 0, 0, 1)
-sky_horizon_color = Color(0.3137255, 0.09803922, 0, 1)
-sky_curve = 0.10245307
-ground_bottom_color = Color(0, 0, 0, 1)
-ground_horizon_color = Color(0.3137255, 0.09803922, 0, 1)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_souhl"]
+sky_top_color = Color(0.3396053, 0.5426322, 1, 1)
+sky_horizon_color = Color(1, 1, 1, 1)
+ground_bottom_color = Color(5.264301e-08, 0.13936868, 9.62615e-08, 1)
+ground_horizon_color = Color(1, 1, 1, 1)
 
-[sub_resource type="Sky" id="Sky_5otu1"]
-sky_material = SubResource("ProceduralSkyMaterial_r3mnd")
+[sub_resource type="Sky" id="Sky_souhl"]
+sky_material = SubResource("ProceduralSkyMaterial_souhl")
 
 [sub_resource type="Environment" id="Environment_nyj3w"]
 background_mode = 2
-background_color = Color(0.15452743, 0.0139328055, 0, 1)
-sky = SubResource("Sky_5otu1")
+sky = SubResource("Sky_souhl")
 ambient_light_source = 2
 tonemap_mode = 2
-
-[sub_resource type="Gradient" id="Gradient_ejn12"]
-colors = PackedColorArray(0, 0, 0, 1, 0.11858138, 0.11858138, 0.11858138, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ejn12"]
-fractal_type = 2
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1j04r"]
-noise = SubResource("FastNoiseLite_ejn12")
-color_ramp = SubResource("Gradient_ejn12")
-seamless = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1j04r"]
-transparency = 1
-shading_mode = 0
-albedo_texture = SubResource("NoiseTexture2D_1j04r")
-
-[sub_resource type="SphereMesh" id="SphereMesh_5drxl"]
-lightmap_size_hint = Vector2i(6285, 3143)
-material = SubResource("StandardMaterial3D_1j04r")
-flip_faces = true
-radius = 400.0
-height = 800.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8g4dc"]
 size = Vector3(200, 1, 200)
@@ -73,7 +49,6 @@ seamless = true
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ktli"]
 vertex_color_use_as_albedo = true
 albedo_texture = SubResource("NoiseTexture2D_nyj3w")
-roughness = 0.63
 
 [sub_resource type="BoxMesh" id="BoxMesh_phun2"]
 material = SubResource("StandardMaterial3D_5ktli")
@@ -87,16 +62,16 @@ albedo_color = Color(0, 0.32097834, 1.92523e-07, 1)
 metallic = 0.12
 roughness = 0.6
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_souhl"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gigjs"]
 resource_local_to_scene = true
 vertex_color_use_as_albedo = true
 albedo_color = Color(0.29219002, 0.29219005, 0.29219002, 1)
 metallic = 0.5
 roughness = 0.5
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_gigjs"]
+[sub_resource type="CylinderMesh" id="CylinderMesh_o0o1q"]
 resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_souhl")
+material = SubResource("StandardMaterial3D_gigjs")
 top_radius = 0.05
 bottom_radius = 0.05
 height = 0.1
@@ -105,20 +80,11 @@ height = 0.1
 script = ExtResource("1_1j04r")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=304732385]
-transform = Transform3D(0.7071068, -0.61237246, 0.35355332, 0, 0.49999997, 0.8660254, -0.7071068, -0.61237246, 0.35355332, 0, 100, 0)
-light_color = Color(0.47007585, 0.47007585, 0.47007585, 1)
-light_energy = 2.0
+transform = Transform3D(0.7071068, -0.61237246, 0.35355335, 0, 0.49999997, 0.8660254, -0.7071068, -0.61237246, 0.35355335, 223.4224, 100, 222.74657)
 shadow_enabled = true
-sky_mode = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1278898658]
 environment = SubResource("Environment_nyj3w")
-
-[node name="SkyboxMesh" type="MeshInstance3D" parent="." unique_id=2057529045]
-unique_name_in_owner = true
-transform = Transform3D(-4.3711385e-08, -0.99999994, 0, 0.9999999, -4.3711385e-08, 0, 0, 0, 0.99999994, 0, 6.5963516, 0)
-visible = false
-mesh = SubResource("SphereMesh_5drxl")
 
 [node name="Grid" parent="." unique_id=1835648231 instance=ExtResource("2_souhl")]
 unique_name_in_owner = true
@@ -165,6 +131,8 @@ shape = SubResource("BoxShape3D_nyj3w")
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="WallsStaticBody3D" unique_id=1502672759]
 transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, 0, 0, 80)
 shape = SubResource("BoxShape3D_nyj3w")
+
+[node name="Clouds" parent="." unique_id=621452626 instance=ExtResource("3_gigjs")]
 
 [node name="Character" parent="." unique_id=2029105437 node_paths=PackedStringArray("grid") instance=ExtResource("1_vmgcc")]
 transform = Transform3D(0, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, 0, 15.7492695, 0, -5.8377905)
@@ -812,7 +780,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
 
 [node name="GunMeshInstance3D" parent="Level1/Antenna1" index="2" unique_id=773715414]
-mesh = SubResource("CylinderMesh_gigjs")
+mesh = SubResource("CylinderMesh_o0o1q")
 
 [node name="AntenaPivotPoint" parent="Level1/Antenna1" index="3" unique_id=1884495132]
 transform = Transform3D(0.99939084, 0.025523871, 0.023801396, 0, 0.6819983, -0.73135364, -0.034899496, 0.73090816, 0.68158287, 0, 1.5, 0)

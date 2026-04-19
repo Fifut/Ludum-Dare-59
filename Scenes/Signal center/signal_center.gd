@@ -1,7 +1,5 @@
 extends Node3D
 
-@onready var skybox_mesh: MeshInstance3D = %SkyboxMesh
-
 @onready var level_label: Label = %LevelLabel
 @onready var game_over_label: Label = %GameOverLabel
 @onready var timer_label: Label = %TimerLabel
@@ -17,7 +15,6 @@ var _level: int = 1
 var _start_time: int = 0
 
 func _ready() -> void:
-	skybox_mesh.show()
 	game_over_label.hide()
 	
 	_start_time = Time.get_ticks_msec()

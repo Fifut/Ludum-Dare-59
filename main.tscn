@@ -2,24 +2,25 @@
 
 [ext_resource type="Script" uid="uid://cltkovetwpmef" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://ce6hb837nlxqp" path="res://Scenes/Planet/planet.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://clqro0j3ivvh3" path="res://Scenes/Cloud/clouds.tscn" id="2_7mycd"]
 [ext_resource type="AudioStream" uid="uid://bfrxuwtm1v6t2" path="res://Assets/Sounds/menu.wav" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://bq5bia4e8hcfp" path="res://Scenes/Antenna/antenna.tscn" id="3_lquwl"]
 [ext_resource type="PackedScene" uid="uid://ddxp6kh2n0ong" path="res://Assets/3D/Pin.glb" id="4_7mycd"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ig7tw"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lquwl"]
+sky_top_color = Color(0.3396053, 0.5426322, 1, 1)
+sky_horizon_color = Color(1, 1, 1, 1)
+ground_bottom_color = Color(5.264301e-08, 0.13936868, 9.62615e-08, 1)
+ground_horizon_color = Color(1, 1, 1, 1)
 
-[sub_resource type="Sky" id="Sky_0xm2m"]
-sky_material = SubResource("ProceduralSkyMaterial_ig7tw")
+[sub_resource type="Sky" id="Sky_5otu1"]
+sky_material = SubResource("ProceduralSkyMaterial_lquwl")
 
-[sub_resource type="Environment" id="Environment_h2yge"]
-background_mode = 1
-sky = SubResource("Sky_0xm2m")
-ambient_light_source = 1
-reflected_light_source = 1
+[sub_resource type="Environment" id="Environment_7mycd"]
+background_mode = 2
+sky = SubResource("Sky_5otu1")
+ambient_light_source = 2
 tonemap_mode = 2
-volumetric_fog_density = 0.875
 
 [sub_resource type="Gradient" id="Gradient_h2yge"]
 colors = PackedColorArray(0, 0.14824149, 0, 1, 1.8349849e-07, 0.2261279, 5.2943824e-07, 1)
@@ -74,12 +75,14 @@ render_target_update_mode = 4
 
 [node name="Menu" type="Node3D" parent="SubViewportContainer/SubViewport" unique_id=912987448]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport/Menu" unique_id=1615294739]
-transform = Transform3D(-0.81101507, -0.4953721, 0.31122503, 0.5849119, -0.6970708, 0.4146932, 0.011518449, 0.5183617, 0.8550838, 0, 20, 0)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport/Menu" unique_id=203868844]
+transform = Transform3D(0.7071068, -0.61237246, 0.35355335, 0, 0.49999997, 0.8660254, -0.7071068, -0.61237246, 0.35355335, 223.4224, 100, 222.74657)
 shadow_enabled = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport/Menu" unique_id=1730548669]
-environment = SubResource("Environment_h2yge")
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport/Menu" unique_id=480496007]
+environment = SubResource("Environment_7mycd")
+
+[node name="Clouds" parent="SubViewportContainer/SubViewport/Menu" unique_id=621452626 instance=ExtResource("2_7mycd")]
 
 [node name="GrassMesh" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Menu" unique_id=1568246010]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, -0.5, -30)
@@ -90,7 +93,7 @@ unique_name_in_owner = true
 
 [node name="Planet" parent="SubViewportContainer/SubViewport/Menu/OrbitMarker" unique_id=1179467177 instance=ExtResource("1_ig7tw")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -13.71563, 67.6678, -79.14209)
-color = Color(0.26137525, 0.00052144856, 0.67602044, 1)
+color = Color(1, 0, 0, 1)
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/Menu" unique_id=360552822]
 transform = Transform3D(0.59566426, 0.3168654, 0.7380924, 0, 0.9189014, -0.3944873, -0.80323356, 0.23498198, 0.5473567, 2.1424322, 0.52364635, 1.6129665)

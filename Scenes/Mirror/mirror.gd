@@ -6,7 +6,7 @@ class_name Mirror extends StaticBody3D
 
 func _process(_delta: float) -> void:
 	angle_label.text = str(floori(global_rotation_degrees.y))
-	global_rotation_degrees.y = snappedf(global_rotation_degrees.y, 5.0)
+	global_rotation_degrees.y = snappedf(global_rotation_degrees.y, 15.0)
 	
 	var pos_x = snappedf(position.x, 1.0)
 	var pos_z = snappedf(position.z, 1.0)

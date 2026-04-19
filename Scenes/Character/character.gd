@@ -41,11 +41,11 @@ func _input(event: InputEvent) -> void:
 
 	
 	if _grab_in_progress and event.is_action_pressed("rotation_left"):
-		_interact.rotation_degrees.y += 5.0
+		_interact.rotation_degrees.y += 15.0
 		_grab_rotation = _interact.global_rotation_degrees
 		
 	elif _grab_in_progress and event.is_action_pressed("rotation_right"):
-		_interact.rotation_degrees.y -= 5.0	
+		_interact.rotation_degrees.y -= 15.0	
 		_grab_rotation = _interact.global_rotation_degrees
 		
 	elif _interact and _grab_in_progress:
