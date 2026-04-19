@@ -2,50 +2,27 @@
 
 [ext_resource type="Script" uid="uid://dc3p74akolj3b" path="res://Scenes/Antenna/antenna.gd" id="1_w6kpv"]
 [ext_resource type="PackedScene" uid="uid://bwroakmkgt6pj" path="res://Scenes/Signal/ld_signal.tscn" id="2_j5802"]
+[ext_resource type="PackedScene" uid="uid://c756klohmhp0l" path="res://Assets/3D/Antenna.glb" id="3_a1fch"]
+[ext_resource type="PackedScene" uid="uid://dfyvng86pirnn" path="res://Assets/3D/Antenna base.glb" id="3_k6ybw"]
 [ext_resource type="AudioStream" uid="uid://mptkwh7xxnna" path="res://Assets/Sounds/beep_out.wav" id="4_gwanj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w6kpv"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_av0w1"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ie77w"]
+albedo_color = Color(0.26657522, 0.2665752, 0.2665752, 1)
+metallic = 0.4
+roughness = 0.33
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wdmg3"]
-resource_local_to_scene = true
-vertex_color_use_as_albedo = true
-albedo_color = Color(0.29219002, 0.29219005, 0.29219002, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p84v4"]
+albedo_color = Color(0, 1, 0, 1)
+emission_enabled = true
+emission = Color(0, 1, 0, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k6ybw"]
+albedo_color = Color(0.34615496, 3.3691526e-07, 2.4065375e-07, 1)
 metallic = 0.5
 roughness = 0.5
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_a1fch"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_wdmg3")
-top_radius = 0.05
-bottom_radius = 0.05
-height = 0.1
-
-[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_b0ucf"]
-sections = 2
-section_rings = 1
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w6kpv"]
-
-[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_w6kpv"]
-radius = 0.4
-sections = 2
-section_length = 0.21
-section_rings = 1
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j5802"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gwanj"]
-shading_mode = 0
-albedo_color = Color(1, 0.40724552, 0.338652, 1)
-
-[sub_resource type="TorusMesh" id="TorusMesh_j5802"]
-material = SubResource("StandardMaterial3D_gwanj")
-inner_radius = 0.05
-outer_radius = 0.06
-rings = 8
-ring_segments = 6
 
 [node name="Antenna" type="StaticBody3D" unique_id=499436219]
 collision_layer = 18
@@ -57,50 +34,46 @@ ld_signal = ExtResource("2_j5802")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_w6kpv")
 
-[node name="BaseCSGMesh3D" type="CSGMesh3D" parent="." unique_id=65351379]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-mesh = SubResource("BoxMesh_av0w1")
+[node name="Antenna base" parent="." unique_id=1452917017 instance=ExtResource("3_k6ybw")]
 
-[node name="GunMeshInstance3D" type="MeshInstance3D" parent="." unique_id=773715414]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.5, 0.49)
-mesh = SubResource("CylinderMesh_a1fch")
+[node name="Solide1" parent="Antenna base" index="0" unique_id=333517199]
+surface_material_override/0 = SubResource("StandardMaterial3D_ie77w")
+surface_material_override/3 = SubResource("StandardMaterial3D_p84v4")
+
+[node name="SignalHoleLight" type="OmniLight3D" parent="." unique_id=136462701]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.6)
+light_color = Color(0, 1, 0, 1)
+omni_range = 0.35
 
 [node name="AntenaPivotPoint" type="Marker3D" parent="." unique_id=1884495132]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 0, 1.5, 0)
+transform = Transform3D(1, 0, 0, 0, 0.7071067, -0.7071067, 0, 0.7071067, 0.7071067, 0, 1.6, 0)
 
-[node name="AntenaOutCSGMesh3D" type="CSGMesh3D" parent="AntenaPivotPoint" unique_id=8451087]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
-mesh = SubResource("TubeTrailMesh_b0ucf")
-material = SubResource("StandardMaterial3D_w6kpv")
+[node name="Antenna" parent="AntenaPivotPoint" unique_id=316008472 instance=ExtResource("3_a1fch")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="AntenaInsCSGMesh3D" type="CSGMesh3D" parent="AntenaPivotPoint/AntenaOutCSGMesh3D" unique_id=1156761574]
-operation = 2
-mesh = SubResource("TubeTrailMesh_w6kpv")
-material = SubResource("StandardMaterial3D_j5802")
+[node name="Solide1" parent="AntenaPivotPoint/Antenna" index="0" unique_id=170841197]
+surface_material_override/0 = SubResource("StandardMaterial3D_k6ybw")
 
-[node name="CrossMeshInstance3D" type="MeshInstance3D" parent="AntenaPivotPoint/AntenaOutCSGMesh3D" unique_id=1394229017]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
-mesh = SubResource("TorusMesh_j5802")
-
-[node name="TargetCamera3D" type="Camera3D" parent="AntenaPivotPoint/AntenaOutCSGMesh3D" unique_id=2072039109]
+[node name="TargetCamera3D" type="Camera3D" parent="AntenaPivotPoint" unique_id=2072039109]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.15306461, -6.6906694e-09)
-fov = 80.0
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, 1.1920929e-07, 0.20790453)
 
-[node name="RayCast3D" type="RayCast3D" parent="AntenaPivotPoint/AntenaOutCSGMesh3D" unique_id=744877413]
+[node name="RayCast3D" type="RayCast3D" parent="AntenaPivotPoint" unique_id=744877413]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -8.940697e-08, -1, 0, 1, -8.940697e-08, 0, 0, 0)
 target_position = Vector3(0, -500, 0)
 collision_mask = 64
 
-[node name="OmniLight3D" type="OmniLight3D" parent="AntenaPivotPoint/AntenaOutCSGMesh3D" unique_id=151081874]
-transform = Transform3D(1, 0, 0, 0, -0.50000006, 0.8660254, 0, -0.8660254, -0.50000006, 0, -0.011905551, -0.020621061)
+[node name="OmniLight3D" type="OmniLight3D" parent="AntenaPivotPoint" unique_id=151081874]
+transform = Transform3D(1, 0, 0, 0, 0.86602557, 0.5000001, 0, -0.5000001, 0.86602557, 0, 0.02062118, -0.011905551)
 light_color = Color(1, 1, 0.7372549, 1)
 omni_range = 0.5599975
 
 [node name="SignalEmitMarker3D" type="Marker3D" parent="." unique_id=1092486383]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.4)
 
 [node name="BeepAudio" type="AudioStreamPlayer3D" parent="." unique_id=2051965649]
 unique_name_in_owner = true
@@ -111,3 +84,6 @@ unique_name_in_owner = true
 wait_time = 0.5
 
 [connection signal="timeout" from="EmitTimer" to="." method="_on_emit_timer_timeout"]
+
+[editable path="Antenna base"]
+[editable path="AntenaPivotPoint/Antenna"]

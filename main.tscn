@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://bfrxuwtm1v6t2" path="res://Assets/Sounds/menu.wav" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://bq5bia4e8hcfp" path="res://Scenes/Antenna/antenna.tscn" id="3_lquwl"]
 [ext_resource type="PackedScene" uid="uid://ddxp6kh2n0ong" path="res://Assets/3D/Pin.glb" id="4_7mycd"]
+[ext_resource type="PackedScene" uid="uid://bnv3y5qhckxb3" path="res://Scenes/Receiver/receiver.tscn" id="5_272bh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lquwl"]
 sky_top_color = Color(0.3396053, 0.5426322, 1, 1)
@@ -92,13 +93,21 @@ mesh = SubResource("BoxMesh_272bh")
 unique_name_in_owner = true
 
 [node name="Planet" parent="SubViewportContainer/SubViewport/Menu/OrbitMarker" unique_id=1179467177 instance=ExtResource("1_ig7tw")]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -13.71563, 67.6678, -79.14209)
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -68.15918, 102.1625, -258.4523)
 color = Color(1, 0, 0, 1)
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/Menu" unique_id=360552822]
-transform = Transform3D(0.59566426, 0.3168654, 0.7380924, 0, 0.9189014, -0.3944873, -0.80323356, 0.23498198, 0.5473567, 2.1424322, 0.52364635, 1.6129665)
+transform = Transform3D(0.59566426, 0.16343465, 0.7864307, 0, 0.97908103, -0.20347092, -0.80323356, 0.12120037, 0.5832036, 3.0289469, 0.81385124, 2.8552814)
+fov = 50.0
 
 [node name="Antenna" parent="SubViewportContainer/SubViewport/Menu" unique_id=499436219 instance=ExtResource("3_lquwl")]
+transform = Transform3D(0.9438182, 0, 0.33046508, 0, 1, 0, -0.33046508, 0, 0.9438182, -0.1956582, 0, -1.9578505)
+
+[node name="Receiver" parent="SubViewportContainer/SubViewport/Menu" unique_id=629734283 instance=ExtResource("5_272bh")]
+transform = Transform3D(-0.7941389, 0, 0.60773635, 0, 1, 0, -0.60773635, 0, -0.7941389, -1.5737703, 0, 0.90841866)
+
+[node name="CountLabel" parent="SubViewportContainer/SubViewport/Menu/Receiver" index="5" unique_id=1634150156]
+visible = false
 
 [node name="Pin1" parent="SubViewportContainer/SubViewport/Menu" unique_id=1641910093 instance=ExtResource("4_7mycd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3086243, 0, 1.5701904)
@@ -140,7 +149,11 @@ theme_override_constants/margin_bottom = 100
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-theme_override_font_sizes/font_size = 50
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 60
 text = "Catch the signals"
 
 [node name="StartButton" type="Button" parent="MarginContainer" unique_id=1283307706]
@@ -165,13 +178,46 @@ text = "Ludum Dare 59"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2013327290]
+custom_minimum_size = Vector2(90, 145)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -89.0
+offset_top = -145.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="MusicLabel" type="Label" parent="VBoxContainer" unique_id=609052515]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Music"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicVSlider" type="VSlider" parent="VBoxContainer" unique_id=1411404475]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(20, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.1
+value = 1.0
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1623170280]
 stream = ExtResource("3_h2yge")
 volume_db = -5.0
 autoplay = true
 
 [connection signal="pressed" from="MarginContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="value_changed" from="VBoxContainer/MusicVSlider" to="." method="_on_music_v_slider_value_changed"]
 
+[editable path="SubViewportContainer/SubViewport/Menu/Receiver"]
+[editable path="SubViewportContainer/SubViewport/Menu/Receiver/Receiver"]
 [editable path="SubViewportContainer/SubViewport/Menu/Pin1"]
 [editable path="SubViewportContainer/SubViewport/Menu/Pin2"]
 [editable path="SubViewportContainer/SubViewport/Menu/Pin3"]

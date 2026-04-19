@@ -40,16 +40,24 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vj6dk"]
+bg_color = Color(0.52860665, 0.5286066, 3.85046e-07, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1rmny"]
+bg_color = Color(0.80072886, 0.8007291, 0, 1)
+
 [resource]
 default_font = ExtResource("1_e1x85")
 default_font_size = 30
-Button/colors/font_color = Color(0.24705882, 0, 1, 1)
-Button/colors/font_focus_color = Color(0.24705882, 0, 1, 1)
-Button/colors/font_hover_color = Color(0.24705882, 0, 1, 1)
-Button/colors/font_hover_pressed_color = Color(0.24705882, 0, 1, 1)
-Button/colors/font_pressed_color = Color(0.24705882, 0, 1, 1)
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
 Button/styles/focus = SubResource("StyleBoxFlat_e1x85")
 Button/styles/hover = SubResource("StyleBoxFlat_cjfk0")
 Button/styles/hover_pressed = SubResource("StyleBoxFlat_cjfk0")
 Button/styles/normal = SubResource("StyleBoxFlat_110ce")
 Button/styles/pressed = SubResource("StyleBoxFlat_05tig")
+VSlider/styles/grabber_area = SubResource("StyleBoxFlat_vj6dk")
+VSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_1rmny")

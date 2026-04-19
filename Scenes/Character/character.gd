@@ -2,6 +2,7 @@ class_name Player extends CharacterBody3D
 
 @export var grid: Grid
 
+@onready var body_mesh: MeshInstance3D = %BodyMesh
 @onready var camera: Camera3D = $Camera3D
 @onready var interact_label: Label = %InteractLabel
 
@@ -16,6 +17,7 @@ var _grab_rotation: Vector3 = Vector3.ZERO
 
 
 func _ready() -> void:
+	body_mesh.hide()
 	interact_label.hide()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 

@@ -27,6 +27,7 @@ background_mode = 2
 sky = SubResource("Sky_souhl")
 ambient_light_source = 2
 tonemap_mode = 2
+glow_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8g4dc"]
 size = Vector3(200, 1, 200)
@@ -44,7 +45,6 @@ width = 1024
 height = 1024
 noise = SubResource("FastNoiseLite_o0o1q")
 color_ramp = SubResource("Gradient_gigjs")
-seamless = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ktli"]
 vertex_color_use_as_albedo = true
@@ -61,20 +61,6 @@ size = Vector3(1, 20, 160)
 albedo_color = Color(0, 0.32097834, 1.92523e-07, 1)
 metallic = 0.12
 roughness = 0.6
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gigjs"]
-resource_local_to_scene = true
-vertex_color_use_as_albedo = true
-albedo_color = Color(0.29219002, 0.29219005, 0.29219002, 1)
-metallic = 0.5
-roughness = 0.5
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_o0o1q"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_gigjs")
-top_radius = 0.05
-bottom_radius = 0.05
-height = 0.1
 
 [node name="Signal center" type="Node3D" unique_id=144197496]
 script = ExtResource("1_1j04r")
@@ -141,12 +127,11 @@ grid = NodePath("../Grid")
 [node name="Orbit" parent="." unique_id=251649051 instance=ExtResource("4_nyj3w")]
 
 [node name="Receivers" type="Node3D" parent="." unique_id=1080233647]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 2.5)
 
 [node name="Receiver1" parent="Receivers" unique_id=1853702718 instance=ExtResource("3_5otu1")]
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
-max_ld_signal = 3
 
 [node name="Trees" type="Node3D" parent="." unique_id=2140059900]
 
@@ -253,7 +238,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.599022, 0, -60.145653)
 surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
 
 [node name="Pin18" parent="Trees" unique_id=328113829 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.591576, 0, -28.162188)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.156, 0, -67.41575)
 
 [node name="Solide1" parent="Trees/Pin18" index="0" unique_id=1217299821]
 surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
@@ -480,6 +465,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.150417, 0, -67.84341)
 [node name="Solide1" parent="Trees/Pin55" index="0" unique_id=1217299821]
 surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
 
+[node name="Pin113" parent="Trees" unique_id=1708897357 instance=ExtResource("8_1j04r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.781296, 0, -80.15475)
+metadata/_edit_group_ = true
+
+[node name="Solide1" parent="Trees/Pin113" index="0" unique_id=1217299821]
+surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
+
 [node name="Pin56" parent="Trees" unique_id=370939879 instance=ExtResource("8_1j04r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.85753, 0, -36.640022)
 
@@ -552,6 +544,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.203602, 0, -86.69823)
 [node name="Solide1" parent="Trees/Pin67" index="0" unique_id=1217299821]
 surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
 
+[node name="Pin111" parent="Trees" unique_id=1159975368 instance=ExtResource("8_1j04r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.203602, 0, -72.42421)
+
+[node name="Solide1" parent="Trees/Pin111" index="0" unique_id=1217299821]
+surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
+
+[node name="Pin112" parent="Trees" unique_id=1368636615 instance=ExtResource("8_1j04r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.519047, 0, -61.00499)
+
+[node name="Solide1" parent="Trees/Pin112" index="0" unique_id=1217299821]
+surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
+
 [node name="Pin68" parent="Trees" unique_id=1878631172 instance=ExtResource("8_1j04r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.81763, 0, -87.34552)
 
@@ -563,6 +567,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 81.52474, 0, -56.142136)
 
 [node name="Solide1" parent="Trees/Pin69" index="0" unique_id=1217299821]
 surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
+metadata/_edit_group_ = true
 
 [node name="Pin70" parent="Trees" unique_id=553136110 instance=ExtResource("8_1j04r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.517296, 0, -24.15867)
@@ -751,9 +756,45 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.251686, 0, 61.699055)
 surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
 
 [node name="Pin101" parent="Trees" unique_id=491350867 instance=ExtResource("8_1j04r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.801773, 0, 73.40033)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20126343, 0, 71.41171)
 
 [node name="Solide1" parent="Trees/Pin101" index="0" unique_id=1217299821]
+surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
+
+[node name="Pin105" parent="Trees" unique_id=1068560980 instance=ExtResource("8_1j04r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86.31602, 0, -7.743699)
+
+[node name="Solide1" parent="Trees/Pin105" index="0" unique_id=1217299821]
+surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
+
+[node name="Pin106" parent="Trees" unique_id=808434968 instance=ExtResource("8_1j04r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.09204, 0, 4.4773636)
+
+[node name="Solide1" parent="Trees/Pin106" index="0" unique_id=1217299821]
+surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
+
+[node name="Pin107" parent="Trees" unique_id=70581052 instance=ExtResource("8_1j04r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.304657, 0, 71.29726)
+
+[node name="Solide1" parent="Trees/Pin107" index="0" unique_id=1217299821]
+surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
+
+[node name="Pin108" parent="Trees" unique_id=1838234657 instance=ExtResource("8_1j04r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.881523, 0, 82.64351)
+
+[node name="Solide1" parent="Trees/Pin108" index="0" unique_id=1217299821]
+surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
+
+[node name="Pin109" parent="Trees" unique_id=1457299996 instance=ExtResource("8_1j04r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.929306, 0, 61.39311)
+
+[node name="Solide1" parent="Trees/Pin109" index="0" unique_id=1217299821]
+surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
+
+[node name="Pin110" parent="Trees" unique_id=2012311171 instance=ExtResource("8_1j04r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.25688, 0, 53.667088)
+
+[node name="Solide1" parent="Trees/Pin110" index="0" unique_id=1217299821]
 surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
 
 [node name="Pin102" parent="Trees" unique_id=1889187958 instance=ExtResource("8_1j04r")]
@@ -777,10 +818,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_5drxl")
 [node name="Level1" type="Node3D" parent="." unique_id=1244060405]
 
 [node name="Antenna1" parent="Level1" unique_id=499436219 instance=ExtResource("2_r3mnd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
-
-[node name="GunMeshInstance3D" parent="Level1/Antenna1" index="2" unique_id=773715414]
-mesh = SubResource("CylinderMesh_o0o1q")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -12.5)
 
 [node name="AntenaPivotPoint" parent="Level1/Antenna1" index="3" unique_id=1884495132]
 transform = Transform3D(0.99939084, 0.025523871, 0.023801396, 0, 0.6819983, -0.73135364, -0.034899496, 0.73090816, 0.68158287, 0, 1.5, 0)
@@ -793,14 +831,14 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4)
 
 [node name="Antenna1" parent="Level2" unique_id=384781390 instance=ExtResource("2_r3mnd")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.5, 0, 0)
 
 [node name="Level3" parent="." unique_id=1159741071 instance=ExtResource("7_gigjs")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -10)
 
 [node name="Antenna1" parent="Level3" unique_id=144193462 instance=ExtResource("2_r3mnd")]
-transform = Transform3D(0.7071067, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, 0.7071067, 2, 0, 1)
+transform = Transform3D(0.7071067, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, 0.7071067, 2.5, 0, 1.5)
 
 [node name="Mirror1" parent="Level3" unique_id=1907107573 instance=ExtResource("6_phun2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
@@ -810,7 +848,7 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -8)
 
 [node name="Antenna1" parent="Level4" unique_id=1500031079 instance=ExtResource("2_r3mnd")]
-transform = Transform3D(0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, 0.7071067, 0, 0, 0)
+transform = Transform3D(0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, 0.7071067, -0.5, 0, 0.5)
 
 [node name="UI" type="Control" parent="." unique_id=1037403920]
 layout_mode = 3
@@ -874,7 +912,6 @@ horizontal_alignment = 2
 
 [node name="MusicAudio" type="AudioStreamPlayer" parent="." unique_id=126822761]
 stream = ExtResource("9_5drxl")
-volume_db = -8.0
 autoplay = true
 
 [connection signal="on_level_reach" from="Receivers/Receiver1" to="." method="_on_receiver_1_on_level_reach"]
@@ -934,6 +971,7 @@ autoplay = true
 [editable path="Trees/Pin53"]
 [editable path="Trees/Pin54"]
 [editable path="Trees/Pin55"]
+[editable path="Trees/Pin113"]
 [editable path="Trees/Pin56"]
 [editable path="Trees/Pin57"]
 [editable path="Trees/Pin58"]
@@ -946,6 +984,8 @@ autoplay = true
 [editable path="Trees/Pin65"]
 [editable path="Trees/Pin66"]
 [editable path="Trees/Pin67"]
+[editable path="Trees/Pin111"]
+[editable path="Trees/Pin112"]
 [editable path="Trees/Pin68"]
 [editable path="Trees/Pin69"]
 [editable path="Trees/Pin70"]
@@ -980,7 +1020,15 @@ autoplay = true
 [editable path="Trees/Pin99"]
 [editable path="Trees/Pin100"]
 [editable path="Trees/Pin101"]
+[editable path="Trees/Pin105"]
+[editable path="Trees/Pin106"]
+[editable path="Trees/Pin107"]
+[editable path="Trees/Pin108"]
+[editable path="Trees/Pin109"]
+[editable path="Trees/Pin110"]
 [editable path="Trees/Pin102"]
 [editable path="Trees/Pin103"]
 [editable path="Trees/Pin104"]
 [editable path="Level1/Antenna1"]
+[editable path="Level1/Antenna1/Antenna base"]
+[editable path="Level1/Antenna1/AntenaPivotPoint/Antenna"]

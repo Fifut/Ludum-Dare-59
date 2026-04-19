@@ -10,3 +10,7 @@ func _on_start_button_pressed() -> void:
 
 func _process(delta: float) -> void:
 	orbit_marker.rotation_degrees.y += delta
+
+
+func _on_music_v_slider_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_linear(0, value)

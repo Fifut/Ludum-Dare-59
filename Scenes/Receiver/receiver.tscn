@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dhhcl8gb50ym4" path="res://Scenes/Receiver/receiver.gd" id="1_mtts3"]
 [ext_resource type="FontFile" uid="uid://d32duxbramq05" path="res://Assets/Fonts/KodeMono-Regular.ttf" id="2_5cvh0"]
+[ext_resource type="PackedScene" uid="uid://b51anxo0iw80" path="res://Assets/3D/Receiver.glb" id="2_82c2j"]
 [ext_resource type="AudioStream" uid="uid://d4c21kgvgl50v" path="res://Assets/Sounds/beep_in.wav" id="2_bomn8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e1iml"]
@@ -10,46 +11,59 @@
 height = 0.1
 radius = 0.45
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mtts3"]
-albedo_color = Color(0.5660922, 1.7688051e-06, 3.3691526e-07, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lg2ox"]
+albedo_color = Color(0.42318463, 9.0846794e-07, 3.128499e-07, 1)
 metallic = 0.5
 roughness = 0.5
-
-[sub_resource type="BoxMesh" id="BoxMesh_mtts3"]
-material = SubResource("StandardMaterial3D_mtts3")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bomn8"]
-albedo_color = Color(1, 0, 0, 1)
-metallic = 0.5
-roughness = 0.5
-emission_enabled = true
-emission = Color(1, 0, 0, 1)
-emission_energy_multiplier = 0.5
-
-[sub_resource type="SphereMesh" id="SphereMesh_bomn8"]
-material = SubResource("StandardMaterial3D_bomn8")
-radius = 0.45
-height = 0.2
-is_hemisphere = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_82c2j"]
-shading_mode = 0
-albedo_color = Color(0.41598046, 0.41598043, 0.4159804, 1)
-billboard_mode = 2
-
-[sub_resource type="QuadMesh" id="QuadMesh_lg2ox"]
-material = SubResource("StandardMaterial3D_82c2j")
-size = Vector2(0.3, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5cvh0"]
-shading_mode = 0
+vertex_color_use_as_albedo = true
 albedo_color = Color(0, 1, 0, 1)
+emission_enabled = true
+emission = Color(0, 1, 0, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_82c2j"]
 material = SubResource("StandardMaterial3D_5cvh0")
-top_radius = 0.08
-bottom_radius = 0.08
+top_radius = 0.18
+bottom_radius = 0.18
 height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_82c2j"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.39215687)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_lg2ox"]
+material = SubResource("StandardMaterial3D_82c2j")
+top_radius = 0.2
+bottom_radius = 0.2
+height = 1.0
+
+[sub_resource type="Curve" id="Curve_82c2j"]
+_data = [Vector2(0, 0), 0.0, 1.3295547, 0, 0, Vector2(1, 1), 0.9468564, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_lg2ox"]
+curve = SubResource("Curve_82c2j")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xyn73"]
+emission_shape = 1
+emission_sphere_radius = 1.4
+direction = Vector3(0, 0, 0)
+spread = 0.0
+orbit_velocity_min = -180.00002
+orbit_velocity_max = 180.00002
+gravity = Vector3(0, 0, 0)
+alpha_curve = SubResource("CurveTexture_lg2ox")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hf4si"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+billboard_mode = 2
+
+[sub_resource type="QuadMesh" id="QuadMesh_25q3j"]
+material = SubResource("StandardMaterial3D_hf4si")
+size = Vector2(0.025, 0.025)
 
 [node name="Receiver" type="StaticBody3D" unique_id=629734283]
 collision_layer = 10
@@ -72,25 +86,28 @@ transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, 
 shape = SubResource("CylinderShape3D_5cvh0")
 metadata/_edit_lock_ = true
 
-[node name="BaseMeshInstance3D" type="MeshInstance3D" parent="." unique_id=31843767]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-mesh = SubResource("BoxMesh_mtts3")
+[node name="Receiver" parent="." unique_id=1535943237 instance=ExtResource("2_82c2j")]
 
-[node name="ReceiverMeshInstance3D" type="MeshInstance3D" parent="BaseMeshInstance3D" unique_id=1203342142]
-transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, 0.99999994, 0, -0.99999994, -4.3711385e-08, 0, 0, 0.65)
-mesh = SubResource("SphereMesh_bomn8")
+[node name="Solide1" parent="Receiver" index="0" unique_id=194257668]
+surface_material_override/0 = SubResource("StandardMaterial3D_lg2ox")
 
-[node name="GaugeMesh" type="MeshInstance3D" parent="." unique_id=1443685884]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
-mesh = SubResource("QuadMesh_lg2ox")
+[node name="OriginProgress" type="Node3D" parent="." unique_id=1518138279]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.55, 0)
 
-[node name="ProgressMesh" type="MeshInstance3D" parent="GaugeMesh" unique_id=495543469]
+[node name="ProgressMesh" type="MeshInstance3D" parent="OriginProgress" unique_id=495543469]
 unique_name_in_owner = true
 mesh = SubResource("CylinderMesh_82c2j")
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="OriginProgress" unique_id=1488329843]
+mesh = SubResource("CylinderMesh_lg2ox")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1966354510]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.25)
+omni_range = 0.55
+
 [node name="CountLabel" type="Label3D" parent="." unique_id=1634150156]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.18, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.358169, 0)
 billboard = 2
 text = "0/5"
 font = ExtResource("2_5cvh0")
@@ -106,5 +123,19 @@ stream = ExtResource("2_bomn8")
 unique_name_in_owner = true
 autostart = true
 
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=149901890]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 1.5)
+amount = 30
+lifetime = 2.0
+preprocess = 2.0
+process_material = SubResource("ParticleProcessMaterial_xyn73")
+draw_pass_1 = SubResource("QuadMesh_25q3j")
+
+[node name="GPUParticlesAttractorBox3D" type="GPUParticlesAttractorBox3D" parent="." unique_id=1801432251]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.15)
+size = Vector3(4, 4, 6)
+
 [connection signal="body_entered" from="ReceiverArea3D" to="." method="_on_receiver_area_3d_body_entered"]
 [connection signal="timeout" from="DecreaseTimer" to="." method="_on_decrease_timer_timeout"]
+
+[editable path="Receiver"]

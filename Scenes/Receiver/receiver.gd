@@ -11,10 +11,12 @@ signal on_level_reach()
 
 var _received_count: int = 0
 
+func _ready() -> void:
+	progress_mesh.scale.y = 0.0
 
 func _process(delta: float) -> void:
 	var ratio: float = _received_count / float(max_ld_signal)
-	progress_mesh.scale.y = lerpf(progress_mesh.scale.y, ratio, delta)
+	progress_mesh.scale.y = lerpf(progress_mesh.scale.y, ratio, delta * 1.5)
 	progress_mesh.position.y = (progress_mesh.scale.y - 1.0) * 0.5
 	
 	count_label.text = str(_received_count) + "/" + str(max_ld_signal)

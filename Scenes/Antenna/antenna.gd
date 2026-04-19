@@ -9,11 +9,15 @@ class_name Antena extends StaticBody3D
 @onready var beep_audio: AudioStreamPlayer3D = %BeepAudio
 @onready var emit_timer: Timer = %EmitTimer
 @onready var target_camera_3d: Camera3D = %TargetCamera3D
+@onready var signal_hole_light: OmniLight3D = %SignalHoleLight
 
 
 var _interact: bool = false
 var _planet_detected: bool = false
 
+func _ready() -> void:
+	signal_hole_light.light_energy = 0.0
+	
 
 func _process(delta: float) -> void:
 	
@@ -24,7 +28,9 @@ func _process(delta: float) -> void:
 	elif not ray_cast_3d.is_colliding() and _planet_detected:
 		_planet_detected = false
 		emit_timer.stop()
-		
+	
+	signal_hole_light.light_energy = lerpf(signal_hole_light.light_energy, 0.0, 0.2)
+	
 		
 	if not _interact:
 		return
@@ -50,6 +56,8 @@ func _create_signal():
 	var ld_sig: LDSignal = ld_signal.instantiate()
 	ld_sig.global_transform =  signal_emit_marker_3d.global_transform
 	signal_emit_marker_3d.add_child(ld_sig, true)
+	
+	signal_hole_light.light_energy = 3.0
 	beep_audio.play()
 
 
