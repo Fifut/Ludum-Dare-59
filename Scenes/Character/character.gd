@@ -34,19 +34,25 @@ func _input(event: InputEvent) -> void:
 		elif (_interact is Mirror) and not _grab_in_progress:
 			_grab_in_progress = true
 			_grab_rotation = _interact.global_rotation_degrees
+			_interact.grabbed = true
 			_interact.reparent(self)
+			_interact.position.x = 0.0
+			_interact.position.y = 0.0
+			_interact.position.z = -1.75
+			
 		
 		elif (_interact is Mirror) and _grab_in_progress:
 		#elif (_interact is Receiver or _interact is Mirror) and _grab_in_progress:		
 			_grab_in_progress = false
+			_interact.grabbed = false
 			_interact.reparent(get_tree().root)
 
 	
-	if _grab_in_progress and event.is_action_pressed("rotation_left"):
+	if _interact and _grab_in_progress and event.is_action_pressed("rotation_left"):
 		_interact.rotation_degrees.y += 15.0
 		_grab_rotation = _interact.global_rotation_degrees
 		
-	elif _grab_in_progress and event.is_action_pressed("rotation_right"):
+	elif _interact and _grab_in_progress and event.is_action_pressed("rotation_right"):
 		_interact.rotation_degrees.y -= 15.0	
 		_grab_rotation = _interact.global_rotation_degrees
 		
@@ -73,7 +79,7 @@ func _input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	
 	if _grab_in_progress:
-		interact_label.text = "E to drop - Mouse Left/Right rotate"
+		interact_label.text = "E to drop - Mouse Left/Right to rotate"
 		
 	elif _stop_move:
 		interact_label.text = "E to exit"
@@ -104,13 +110,17 @@ func _physics_process(delta: float) -> void:
 		
 	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	
+	var speed = SPEED
+	if Input.is_action_pressed("speed"):
+		speed *= 2
+		
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+		velocity.x = direction.x * speed
+		velocity.z = direction.z * speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, speed)
+		velocity.z = move_toward(velocity.z, 0, speed)
 		
 	move_and_slide()
 
@@ -119,8 +129,6 @@ func _physics_process(delta: float) -> void:
 func _on_interact_detection_body_entered(body: Node3D) -> void:
 	if not _interact:
 		_interact = body
-		
-		print("Interact start detection : " + str(_interact))
 
 
 func _on_interact_detection_body_exited(body: Node3D) -> void:

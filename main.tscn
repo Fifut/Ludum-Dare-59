@@ -66,6 +66,7 @@ shadow_enabled = true
 environment = SubResource("Environment_7mycd")
 
 [node name="Clouds" parent="SubViewportContainer/SubViewport/Menu" unique_id=621452626 instance=ExtResource("2_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 70, 0)
 
 [node name="GrassMesh" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Menu" unique_id=1568246010]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, -30)
