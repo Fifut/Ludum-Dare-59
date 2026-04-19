@@ -34,8 +34,8 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Restart"):
 		get_tree().change_scene_to_packed(preload("uid://dhgwygr2gtd1c"))
 	
-	if Input.is_action_just_pressed("camera_god"):
-		_next_level()
+	#if Input.is_action_just_pressed("camera_god"):
+		#_next_level()
 
 
 

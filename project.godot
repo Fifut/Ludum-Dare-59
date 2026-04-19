@@ -13,6 +13,8 @@ config_version=5
 config/name="Ludum Dare 59"
 run/main_scene="uid://dvcu813oajup2"
 config/features=PackedStringArray("4.6", "GL Compatibility")
+boot_splash/stretch_mode=0
+boot_splash/image="uid://cxqm6eyqecjjn"
 config/icon="res://icon.svg"
 
 [display]
