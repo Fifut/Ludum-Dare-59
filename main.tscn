@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cltkovetwpmef" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://ce6hb837nlxqp" path="res://Scenes/Planet/planet.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://clqro0j3ivvh3" path="res://Scenes/Cloud/clouds.tscn" id="2_7mycd"]
+[ext_resource type="Material" uid="uid://da0n3wbnuad7a" path="res://Scenes/Effects/grass_material.tres" id="3_5vw27"]
 [ext_resource type="AudioStream" uid="uid://bfrxuwtm1v6t2" path="res://Assets/Sounds/menu.wav" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://bq5bia4e8hcfp" path="res://Scenes/Antenna/antenna.tscn" id="3_lquwl"]
 [ext_resource type="PackedScene" uid="uid://ddxp6kh2n0ong" path="res://Assets/3D/Pin.glb" id="4_7mycd"]
@@ -23,29 +24,10 @@ sky = SubResource("Sky_5otu1")
 ambient_light_source = 2
 tonemap_mode = 2
 
-[sub_resource type="Gradient" id="Gradient_h2yge"]
-colors = PackedColorArray(0, 0.14824149, 0, 1, 1.8349849e-07, 0.2261279, 5.2943824e-07, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_1bvp3"]
-noise_type = 3
-seed = 2
-frequency = 0.99
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lquwl"]
-width = 1024
-height = 1024
-noise = SubResource("FastNoiseLite_1bvp3")
-color_ramp = SubResource("Gradient_h2yge")
-seamless = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7mycd"]
-vertex_color_use_as_albedo = true
-albedo_texture = SubResource("NoiseTexture2D_lquwl")
-roughness = 0.63
-
-[sub_resource type="BoxMesh" id="BoxMesh_272bh"]
-material = SubResource("StandardMaterial3D_7mycd")
-size = Vector3(100, 1, 100)
+[sub_resource type="QuadMesh" id="QuadMesh_kek77"]
+material = ExtResource("3_5vw27")
+size = Vector2(100, 100)
+orientation = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_272bh"]
 albedo_color = Color(0, 0.23041722, 1.2032687e-07, 1)
@@ -86,8 +68,8 @@ environment = SubResource("Environment_7mycd")
 [node name="Clouds" parent="SubViewportContainer/SubViewport/Menu" unique_id=621452626 instance=ExtResource("2_7mycd")]
 
 [node name="GrassMesh" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Menu" unique_id=1568246010]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, -0.5, -30)
-mesh = SubResource("BoxMesh_272bh")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, -30)
+mesh = SubResource("QuadMesh_kek77")
 
 [node name="OrbitMarker" type="Marker3D" parent="SubViewportContainer/SubViewport/Menu" unique_id=731867046]
 unique_name_in_owner = true

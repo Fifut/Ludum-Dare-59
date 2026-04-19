@@ -16,7 +16,10 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	var ratio: float = _received_count / float(max_ld_signal)
-	progress_mesh.scale.y = lerpf(progress_mesh.scale.y, ratio, delta * 1.5)
+	if progress_mesh.scale.y >= ratio:
+		progress_mesh.scale.y = lerpf(progress_mesh.scale.y, ratio, delta * 1.5)
+	else:
+		progress_mesh.scale.y = ratio
 	progress_mesh.position.y = (progress_mesh.scale.y - 1.0) * 0.5
 	
 	count_label.text = str(_received_count) + "/" + str(max_ld_signal)

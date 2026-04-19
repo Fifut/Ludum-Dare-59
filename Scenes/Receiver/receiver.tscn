@@ -42,7 +42,7 @@ height = 1.0
 _data = [Vector2(0, 0), 0.0, 1.3295547, 0, 0, Vector2(1, 1), 0.9468564, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_lg2ox"]
+[sub_resource type="CurveTexture" id="CurveTexture_82c2j"]
 curve = SubResource("Curve_82c2j")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xyn73"]
@@ -53,16 +53,17 @@ spread = 0.0
 orbit_velocity_min = -180.00002
 orbit_velocity_max = 180.00002
 gravity = Vector3(0, 0, 0)
-alpha_curve = SubResource("CurveTexture_lg2ox")
+color = Color(0.2901961, 0.70980394, 0.52156866, 1)
+alpha_curve = SubResource("CurveTexture_82c2j")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hf4si"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xyn73"]
 transparency = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
 billboard_mode = 2
 
 [sub_resource type="QuadMesh" id="QuadMesh_25q3j"]
-material = SubResource("StandardMaterial3D_hf4si")
+material = SubResource("StandardMaterial3D_xyn73")
 size = Vector2(0.025, 0.025)
 
 [node name="Receiver" type="StaticBody3D" unique_id=629734283]
